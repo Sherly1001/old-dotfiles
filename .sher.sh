@@ -29,7 +29,10 @@ git_color () {
     fi
 }
 
-export PS1="\[\e]0;\u@: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\$(git_color)\]\$(__git_ps1)\[\033[00m\]\n> "
+__sher_ps="\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w\[\$(git_color)\]\$(__git_ps1)\n"
+
+export PS1="\$(if [ \$? == 0 ];then arw=\"\[\e[01;32m\]-> \";else arw=\"\[\e[01;31m\]-> \";fi;echo \"$__sher_ps\$arw\[\e[0m\]\")"
+
 export PS2='>> '
 
 
