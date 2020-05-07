@@ -116,9 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.sher ]; then
-  . ~/.sher
+if [ -f ~/.sher.sh ]; then
+  . ~/.sher.sh
 fi
 
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
