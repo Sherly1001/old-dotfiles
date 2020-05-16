@@ -15,6 +15,9 @@ alias gmg='git merge'
 alias gbr='git branch'
 alias gst='git status'
 
+shopt -s autocd
+exec {BASH_XTRACEFD}>/dev/null
+
 export VISUAL=vim
 export EDITOR=vim
 
