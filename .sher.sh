@@ -4,6 +4,8 @@ alias ..='cd ..'
 alias t='tree -L 4'
 alias tl='tree -L'
 
+alias fm='astyle -A2s4SpHUk3W3xjxfxhOn'
+
 alias gco='git checkout'
 alias gcoo='gco master'
 alias gcm='git commit -m'
