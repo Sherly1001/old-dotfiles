@@ -44,8 +44,8 @@ export PS2='>> '
 
 b() {
     if [[ -z $1 ]]; then
-        echo "no input file"
-        return
+        echo -e "\033[1;31mno input file\033[0m"
+        return 1
     fi
     cmd=""
     if [[ $1 =~ \.cpp$ ]]; then
