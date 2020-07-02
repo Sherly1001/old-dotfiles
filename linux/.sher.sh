@@ -23,7 +23,7 @@ exec {BASH_XTRACEFD}>/dev/null
 export VISUAL=vim
 export EDITOR=vim
 
-source .git-prompt.sh
+source ~/.git-prompt.sh
 
 git_color () {
     if [[ $(git status 2> /dev/null | grep -e "Changes not staged for commit" -e "Untracked files" -e "Unmerged paths") ]]; then
