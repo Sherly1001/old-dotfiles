@@ -2,7 +2,7 @@
 " mapping key
 
 map <silent> ;hl :set hls!<cr>
-nmap <esc><esc> :silent! nohls<cr>
+nmap <silent> <esc><esc> :nohls<cr>
 
 vmap <bs> x
 imap kk <esc>
