@@ -26,6 +26,7 @@ set guifont=Consolas\ 14
 
 set incsearch
 set hls
+set shortmess-=S
 
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim

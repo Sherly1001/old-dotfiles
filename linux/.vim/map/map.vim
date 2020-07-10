@@ -21,4 +21,6 @@ map <silent> ;rc :e ~/.vimrc<cr>
 map <silent> ;s :e ~/.vim/settings/settings.vim<cr>
 map <silent> ;ind :e ~/.vim/indent/indent.vim<cr>
 map <silent> ;m :e ~/.vim/map/map.vim<cr>
-map <silent> ;rl so ~/.vimrc<cr>
+map <silent> ;rl :so ~/.vimrc<cr>
+
+map <silent> ;cl :ColorToggle<cr>
