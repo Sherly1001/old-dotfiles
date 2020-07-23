@@ -5,6 +5,7 @@ if [[ -z $1 ]]; then
     echo "       -b: copy bash files"
     echo "       -v: copy vim files"
     echo "       -z: copy zsh files"
+    exit 1
 fi
 
 if [[ $(echo $@ | grep -e '\-b' -e '-a') ]]; then
