@@ -5,6 +5,7 @@ alias t='tree -L 4'
 alias tl='tree -L'
 
 alias fm='astyle -A2s4SpHUk3W3xfxhOn'
+alias clfm="clang-format --style='{ AllowShortFunctionsOnASingleLine: Empty, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true, IncludeBlocks: Regroup, IndentCaseLabels: true, IndentWidth: 4, SortIncludes: false }' -i"
 
 alias gco='git checkout'
 alias gcoo='gco master'
@@ -43,29 +44,45 @@ export PS2='>> '
 
 
 b() {
+    local CC=gcc # clang or gcc
+
     if [[ -z $1 ]]; then
-        echo -e "\033[1;31mno input file\033[0m"
+        echo -e "\e[1;31mno input files\e[0m"
         return 1
     fi
-    cmd=""
-    if [[ $1 =~ \.cpp$ ]]; then
-        cmd+="g++ "
-    else
-        cmd+="gcc "
+
+    local args=("$@")
+    local inp="${args[0]}"
+    local ext="${inp##*.}"
+    local out="${inp%.*}"
+    local g='' other='' i=''
+
+    shopt -s nocasematch
+    if [[ $ext == cpp ]]; then
+        if [[ $CC == gcc ]]; then CC=g++
+        else CC=clang++
+        fi
     fi
-    cmd+="'$1' "
-    
-    if [[ -z $2 ]] || [[ $2 = "." ]]; then
-        cmd+="-o '$(echo $1 | sed -e "s/\.cp*$//i")'"
-    else
-        cmd+="-o '$2'"
+    shopt -u nocasematch
+
+    if [[ -n ${args[1]} && ${args[1]} != '.' && ${args[1]} != '-g' ]]; then
+        out="${args[1]}"
     fi
 
-    for (( i = 3; i <= $#; ++i )); do
-        cmd+=" '${!i}'"
+    for ((i = 1; i < $#; ++i)); do
+        if [[ ${args[$i]} == '-g' ]]; then
+            g=' -g'
+            unset args[i]
+            break
+        fi
     done
 
-    echo $cmd
+    other=$(printf " '%s'" "${args[@]:2:$#}")
+    if [[ $other == " ''" ]]; then
+        other=''
+    fi
+
+    local cmd="$CC$g '$inp' -o '$out'$other"
+    echo "$cmd"
     eval "$cmd"
 }
-
