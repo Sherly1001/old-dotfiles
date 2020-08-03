@@ -62,6 +62,7 @@ function b {
     }
 
     echo "$cc"
+    Invoke-Expression "$cc"
 }
 
 Remove-Item Alias:cls
