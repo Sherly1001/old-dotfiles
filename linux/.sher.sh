@@ -12,11 +12,14 @@ alias gcoo='gco master'
 alias gcm='git commit -m'
 alias gad='git add'
 alias glg='git log'
+alias glo='git log --oneline'
 alias gpu='git push'
 alias gcl='git clone'
 alias gmg='git merge'
 alias gbr='git branch'
 alias gst='git status'
+alias gdf='git diff'
+alias gd='git diff --no-index'
 
 shopt -s autocd
 exec {BASH_XTRACEFD}>/dev/null
