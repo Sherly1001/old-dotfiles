@@ -24,8 +24,9 @@ hi normal ctermbg=NONE
 
 set guifont=Consolas\ 14
 
-set incsearch
+set is
 set hls
+set wic
 set shortmess-=S
 
 so ~/.vim/map/map.vim
