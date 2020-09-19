@@ -1,33 +1,30 @@
-
 " Sherly1001's vim settings
 
 set nu
+set rnu
 set mouse=a
 set noundofile
-set nobackup
+set nobk
 set ruler
 set backspace=indent,eol,start
 
 set encoding=utf-8
 
-" set lines=35
-" set columns=135
-
 syntax enable
 syntax on
-set cursorline
+set cul
 
 colorscheme monokai
 hi normal ctermbg=NONE
-" monokai theme
-" color elflord
 
-set guifont=Consolas\ 14
+set gfn=Consolas\ 14
 
 set is
 set hls
 set wic
-set shortmess-=S
+set shm-=S
+set ls=2
+set stl=%F%=%y%r%m%h\ %3p%%\ %-12(%c-%l/%L%)%P
 
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim
