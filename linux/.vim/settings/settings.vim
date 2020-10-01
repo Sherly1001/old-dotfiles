@@ -24,7 +24,7 @@ set hls
 set wic
 set shm-=S
 set ls=2
-set stl=%F%=%y%r\ %3p%%\ %-12(%c-%l/%L%)%P
+set stl=%F%=%y%r\ %-12(%c-%l/%L%)%P
 
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim
