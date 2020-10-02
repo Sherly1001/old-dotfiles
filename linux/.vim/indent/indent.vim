@@ -12,17 +12,19 @@ set textwidth=0
 
 set list
 set listchars=space:.,tab:>-
-hi NonText guifg=#4a4a59 ctermfg=237
-hi SpecialKey guifg=#4a4a59 ctermfg=237
+hi NonText guifg=#1c1c1c ctermfg=234
+hi SpecialKey guifg=#1c1c1c ctermfg=234
 
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
 inoremap {}     {}
+inoremap <expr> }  getline('.')[col('.')-1] == "}" ? "\<Right>" : "}"
 
 inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> )  getline('.')[col('.')-1] == ")" ? "\<Right>" : ")"
 
+inoremap        [  []<Left>
+inoremap <expr> ]  getline('.')[col('.')-1] == "]" ? "\<Right>" : "]"
 
 if expand('%:e') == 'js' || expand('%:e') == 'html' || expand('%:e') == 'css' 
     set tabstop=2
