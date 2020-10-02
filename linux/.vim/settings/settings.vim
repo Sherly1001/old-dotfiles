@@ -14,7 +14,7 @@ syntax enable
 syntax on
 set cul
 
-colorscheme monokai
+colorscheme monokai_pro
 hi normal ctermbg=NONE
 
 set gfn=Consolas\ 14

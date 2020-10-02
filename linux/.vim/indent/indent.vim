@@ -10,11 +10,6 @@ set expandtab
 set smarttab
 set textwidth=0
 
-set list
-set listchars=space:.,tab:>-
-hi NonText guifg=#1c1c1c ctermfg=234
-hi SpecialKey guifg=#1c1c1c ctermfg=234
-
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {}     {}
