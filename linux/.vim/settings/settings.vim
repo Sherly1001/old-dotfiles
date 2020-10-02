@@ -15,7 +15,10 @@ syntax on
 set cul
 
 colorscheme monokai_pro
-hi normal ctermbg=NONE
+
+set list
+set listchars=space:.,tab:>-
+set fillchars=
 
 set gfn=Consolas\ 14
 
