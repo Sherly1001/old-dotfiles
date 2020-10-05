@@ -24,6 +24,22 @@ Set-Alias e explorer
 Set-Alias grep Select-String
 Set-Alias py python
 
+function gco { git checkout $args }
+function gcoo { gco master $args }
+Remove-Item Alias:gcm -Force
+function gcm { git commit -m $args }
+function gad { git add $args }
+function glg { git log $args }
+function glo { git log --oneline $args }
+function gpu { git push $args }
+function gcl { git clone $args }
+function gmg { git merge $args }
+function gbr { git branch $args }
+function gst { git status $args }
+function gdf { git diff $args }
+function gdc { git diff --cached $args }
+function gd { git diff --no-index $args }
+
 Set-PSReadLineKeyHandler -Chord Ctrl+w -Function ViExit
 Set-PSReadLineKeyHandler -Chord Ctrl+d -Function ViExit
 
