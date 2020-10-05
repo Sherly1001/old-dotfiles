@@ -1,13 +1,22 @@
+$host.ui.rawui.windowtitle = 'pwsh'
+
 function prompt {
     $color = if ($?) { 'green' } else { 'red' }
-    Write-Host 'PS ' -nonewline
-
     $regex = [regex]::Escape($HOME) + "(\\.*)*$"
-    $pwd = "$($pwd -replace $regex, '~$1')"
+    $st = Get-GitStatus
 
-    Write-Host $pwd -fore blue -nonewline
+    $prompt = Write-Host 'PS ' -nonewline
+    $prompt += Write-Host "$($pwd -replace $regex, '~$1')" -fore blue -nonewline
 
-    Write-Host "`n->" -fore $color -nonewline
+    if ($st) {
+        if ($st.HasWorking) { $cl = 'red' }
+        elseif ($st.HasIndex) { $cl = 'yellow' }
+        else { $cl = 'green' }
+        $prompt += write-host " [$($st.Branch)]" -fore $cl -nonewline
+    }
+
+    $prompt += Write-Host "`n->" -fore $color -nonewline
+
     return ' '
 }
 
@@ -61,14 +70,22 @@ function b {
         $cc += " '$i'"
     }
 
-    echo "$cc"
+    write-host "$cc"
     Invoke-Expression "$cc"
+}
+
+Remove-Item Alias:rm
+function rm {
+    foreach ($file in $args) {
+        Remove-Item -force -recurse $file
+    }
 }
 
 Remove-Item Alias:cls
 function cls {
 Clear-Host
-write-host -fore green "                   _____    __                       __            ___   ____     ____     ___
+write-host -fore green "
+                   _____    __                       __            ___   ____     ____     ___
                   / ___/   / /_     ___     _____   / /  __  __   <  /  / __ \   / __ \   <  /
                   \__ \   / __ \   / _ \   / ___/  / /  / / / /   / /  / / / /  / / / /   / / 
                  ___/ /  / / / /  /  __/  / /     / /  / /_/ /   / /  / /_/ /  / /_/ /   / /  
@@ -76,9 +93,12 @@ write-host -fore green "                   _____    __                       __ 
                                                       /____/                                  "
 }
 
-write-host -fore green "                   _____    __                       __            ___   ____     ____     ___
+write-host -fore green "
+                   _____    __                       __            ___   ____     ____     ___
                   / ___/   / /_     ___     _____   / /  __  __   <  /  / __ \   / __ \   <  /
                   \__ \   / __ \   / _ \   / ___/  / /  / / / /   / /  / / / /  / / / /   / / 
                  ___/ /  / / / /  /  __/  / /     / /  / /_/ /   / /  / /_/ /  / /_/ /   / /  
                 /____/  /_/ /_/   \___/  /_/     /_/   \__, /   /_/   \____/   \____/   /_/   
                                                       /____/                                  "
+
+Import-Module posh-git
