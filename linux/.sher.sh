@@ -19,6 +19,7 @@ alias gmg='git merge'
 alias gbr='git branch'
 alias gst='git status'
 alias gdf='git diff'
+alias gdc='git diff --cached'
 alias gd='git diff --no-index'
 
 shopt -s autocd
