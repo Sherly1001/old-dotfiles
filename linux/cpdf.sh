@@ -20,10 +20,18 @@ if [[ $(echo $@ | grep -e '\-b' -e '-a') ]]; then
 fi
 
 if [[ $(echo $@ | grep -e '\-v' -e '-a') ]]; then
-    cp -fr .vim ~/
-    echo "cp -fr .vim ~/"
-    cp .vimrc ~/
-    echo "cp .vimrc ~/"
+    if [[ -e ~/.vim ]]; then
+        rm ~/.vim
+        echo "rm ~/.vim"
+    fi
+    if [[ -e ~/.vimrc ]]; then
+        rm ~/.vimrc
+        echo "rm ~/.vimrc"
+    fi
+    echo "ln -s $(pwd)/.vim ~/.vim"
+    ln -s `pwd`/.vim ~/.vim
+    echo "ln -s $(pwd)/.vimrc ~/.vimrc"
+    ln -s `pwd`/.vimrc ~/.vimrc
 fi
 
 if [[ $(echo $@ | grep -e '\-z' -e '-a') ]]; then
