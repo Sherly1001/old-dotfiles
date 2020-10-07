@@ -15,8 +15,6 @@ if [[ $(echo $@ | grep -e '\-b' -e '-a') ]]; then
     echo "cp .bashrc ~/"
     cp .sher.sh ~/
     echo "cp .sher.sh ~/"
-    cp .git-prompt.sh ~/
-    echo "cp .git-prompt.sh ~/"
 fi
 
 if [[ $(echo $@ | grep -e '\-v' -e '-a') ]]; then

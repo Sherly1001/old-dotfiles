@@ -29,19 +29,28 @@ exec {BASH_XTRACEFD}>/dev/null
 export VISUAL=vim
 export EDITOR=vim
 
-source ~/.git-prompt.sh
+__git_ps () {
+    br=`git branch --show-current 2>/dev/null`
+    st=`git status -s 2>/dev/null | awk '/^\w/ { i = "i"; } /^.\w/ { w = "w"; } /^\?\?/ { u = "u"; } END { print u w i }'`
 
-git_color () {
-    if [[ $(git status 2> /dev/null | grep -e "Changes not staged for commit" -e "Untracked files" -e "Unmerged paths") ]]; then
-        echo -e "\033[0;31m";
-    elif [[ $(git status 2> /dev/null | grep -e "Changes to be committed" -e "All conflicts fixed but you are still merging") ]]; then
-        echo -e "\033[1;33m";
+    if [[ $st = *u* || $st = *w* ]]; then
+        cl="\033[1;31m"
+        bk="\033[1;31m"
+    elif [[ $st = *i* ]]; then
+        cl="\033[1;33m"
     else
-        echo -e "\033[1;32m";
+        cl="\033[1;32m"
+        bk="\033[1;32m"
     fi
+
+    if [[ $st = *i* ]]; then
+        bk="\033[1;33m"
+    fi
+
+    [[ $br ]] && echo -e "$bk[$cl$br$bk]\033[m"
 }
 
-__sher_ps="\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w\[\$(git_color)\]\$(__git_ps1)\n"
+__sher_ps="\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w \[\$(__git_ps)\]\n"
 
 export PS1="\$(if [ \$? == 0 ];then arw=\"\[\e[01;32m\]-> \";else arw=\"\[\e[01;31m\]-> \";fi;echo \"$__sher_ps\$arw\[\e[0m\]\")"
 
