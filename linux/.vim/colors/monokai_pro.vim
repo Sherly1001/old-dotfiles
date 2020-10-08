@@ -19,7 +19,7 @@ hi Visual ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#403e41 gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#423f42 gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#423f42 gui=NONE
 hi ColorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#423f42 gui=NONE
-hi CursorLineNr ctermfg=11 ctermbg=NONE cterm=NONE guifg=Yellow guibg=NONE gui=NONE
+hi CursorLineNr ctermfg=11 ctermbg=240 cterm=NONE guifg=Yellow guibg=NONE gui=NONE
 hi LineNr ctermfg=246 ctermbg=236 cterm=NONE guifg=#959394 guibg=#423f42 gui=NONE
 hi VertSplit ctermfg=236 ctermbg=59 cterm=NONE guifg=#696769 guibg=#696769 gui=NONE
 hi MatchParen ctermfg=204 ctermbg=NONE cterm=underline guifg=#ff6188 guibg=NONE gui=underline
