@@ -17,6 +17,8 @@ map <silent> ;n<cr> :tabnew<cr>
 map <silent> <c-t> :browse confirm tabnew<cr>
 map <silent> <c-left> :tabp<cr>
 map <silent> <c-right> :tabn<cr>
+map <silent> <c-j> :resize +5<cr>
+map <silent> <c-k> :resize -5<cr>
 map <silent> <c-h> :vertical resize -5<cr>
 map <silent> <c-l> :vertical resize +5<cr>
 map <silent> ;rc :e ~/.vimrc<cr>
