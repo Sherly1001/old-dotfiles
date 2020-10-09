@@ -22,6 +22,7 @@ set fillchars=
 
 set gfn=Consolas\ 14
 
+set ic
 set is
 set hls
 set wic
