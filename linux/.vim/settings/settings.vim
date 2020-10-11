@@ -21,6 +21,7 @@ set listchars=space:.,tab:>-
 set fillchars=
 
 set gfn=Consolas\ 14
+set go=aegiLrdm
 
 set ic
 set is
