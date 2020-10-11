@@ -1,21 +1,55 @@
 $host.ui.rawui.windowtitle = 'pwsh'
 
+function git-status {
+    $branch = git branch --show-current 2>$null
+    if ($branch -eq $null) {
+        return $null
+    }
+
+    git status -s 2>$null | ForEach-Object -Begin {
+        $index = $False; $working = $False; $untrack = $False
+    } -Process {
+        switch -Regex ($_) {
+            '^\w'   { $index = $True }
+            '^ \w'  { $working = $True }
+            '^\?\?' { $untrack = $True }
+        }
+    }
+
+    return New-Object psobject -Property @{
+        branch = $branch
+        hasIndex = $index
+        hasWorking = $working
+        hasUntrack = $untrack
+    }
+}
+
 function prompt {
     $color = if ($?) { 'green' } else { 'red' }
     $regex = [regex]::Escape($HOME) + "(\\.*)*$"
-    $st = Get-GitStatus
+    $st = git-status
 
-    $prompt = Write-Host 'PS ' -nonewline
-    $prompt += Write-Host "$($pwd -replace $regex, '~$1')" -fore blue -nonewline
+    Write-Host 'PS ' -nonewline
+    Write-Host "$($pwd -replace $regex, '~$1')" -fore blue -nonewline
 
     if ($st) {
-        if ($st.HasWorking) { $cl = 'red' }
-        elseif ($st.HasIndex) { $cl = 'yellow' }
-        else { $cl = 'green' }
-        $prompt += write-host " [$($st.Branch)]" -fore $cl -nonewline
+        if ($st.hasUntrack -or $st.hasWorking) {
+            $cl = 'red'
+            $bk = 'red'
+        } elseif ($st.hasIndex) {
+            $cl = 'yellow'
+        } else {
+            $cl = 'green'
+            $bk = 'green'
+        }
+        if ($st.hasIndex) { $bk = 'yellow' }
+
+        Write-Host " [" -fore $bk -nonewline
+        Write-Host $st.branch -fore $cl -nonewline
+        Write-Host "]" -fore $bk -nonewline
     }
 
-    $prompt += Write-Host "`n->" -fore $color -nonewline
+    Write-Host "`n->" -fore $color -nonewline
 
     return ' '
 }
@@ -117,5 +151,3 @@ write-host -fore green "
                  ___/ /  / / / /  /  __/  / /     / /  / /_/ /   / /  / /_/ /  / /_/ /   / /  
                 /____/  /_/ /_/   \___/  /_/     /_/   \__, /   /_/   \____/   \____/   /_/   
                                                       /____/                                  "
-
-Import-Module posh-git
