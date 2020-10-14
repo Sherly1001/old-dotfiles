@@ -67,6 +67,7 @@ function glg { git log $args }
 function glo { git log --oneline $args }
 function gpu { git push $args }
 function gpl { git pull $args }
+function gft { git fetch $args }
 function gcl { git clone $args }
 function gmg { git merge $args }
 function gbr { git branch $args }
