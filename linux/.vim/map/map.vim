@@ -1,6 +1,7 @@
 
 " mapping key
 
+map <silent> ;ic :set ic!<cr>
 map <silent> ;hl :set hls!<cr>
 nmap <silent> <esc><esc> :nohls<cr>
 
@@ -28,3 +29,4 @@ map <silent> ;m :e ~/.vim/map/map.vim<cr>
 map <silent> ;rl :so ~/.vimrc<cr>
 
 map <silent> ;cl :ColorToggle<cr>
+map <silent> ;nt :NERDTreeToggle<cr>
