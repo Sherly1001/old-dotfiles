@@ -21,7 +21,10 @@ inoremap <expr> )  getline('.')[col('.')-1] == ")" ? "\<Right>" : ")"
 inoremap        [  []<Left>
 inoremap <expr> ]  getline('.')[col('.')-1] == "]" ? "\<Right>" : "]"
 
-if expand('%:e') == 'js' || expand('%:e') == 'html' || expand('%:e') == 'css' 
+inoremap <expr> "  getline('.')[col('.')-1] == "\"" ? "\<Right>" : "\"\"\<Left>"
+inoremap <expr> '  getline('.')[col('.')-1] == "\'" ? "\<Right>" : "\'\'\<Left>"
+
+if expand('%:e') == 'js' || expand('%:e') == 'html' || expand('%:e') == 'css'
     set tabstop=2
     set softtabstop=2
     set shiftwidth=2
