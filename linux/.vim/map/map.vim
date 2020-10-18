@@ -7,13 +7,13 @@ nmap <silent> <esc><esc> :nohls<cr>
 
 vmap <bs> x
 imap kk <esc>
-nmap <Space> <Pagedown>
-nmap <S-Space> <Pageup>
-imap <silent> <c-a> kkggVG
+nmap <space> <pagedown>
+nmap <s-space> <pageup>
+imap <silent> <c-a> <esc>ggVG
 map <silent> <c-a> ggVG
-map <silent> <C-X> "+x
-map <silent> <C-C> "+y
-imap <silent> <C-V> <esc>"+gpa
+map <silent> <c-x> "+x
+map <silent> <c-c> "+y
+imap <silent> <c-v> <esc>"+gpa
 map <silent> ;n<cr> :tabnew<cr>
 map <silent> <c-t> :browse confirm tabnew<cr>
 map <silent> <c-left> :tabp<cr>

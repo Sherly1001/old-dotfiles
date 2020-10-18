@@ -10,19 +10,19 @@ set et
 set sta
 set tw=0
 
-ino {       {}<Left>
-ino {<CR>   {<CR>}<Esc>O
+ino {       {}<left>
+ino {<cr>   {<cr>}<esc>O
 ino {}      {}
-ino <expr>  }   getline('.')[col('.')-1] == "}" ? "\<Right>" : "}"
+ino <expr>  }   getline('.')[col('.')-1] == "}" ? "\<right>" : "}"
 
-ino         (   ()<Left>
-ino <expr>  )   getline('.')[col('.')-1] == ")" ? "\<Right>" : ")"
+ino         (   ()<left>
+ino <expr>  )   getline('.')[col('.')-1] == ")" ? "\<right>" : ")"
 
-ino         [   []<Left>
-ino <expr>  ]   getline('.')[col('.')-1] == "]" ? "\<Right>" : "]"
+ino         [   []<left>
+ino <expr>  ]   getline('.')[col('.')-1] == "]" ? "\<right>" : "]"
 
-ino <expr>  "   getline('.')[col('.')-1] == "\"" ? "\<Right>" : "\"\"\<Left>"
-ino <expr>  '   getline('.')[col('.')-1] == "\'" ? "\<Right>" : "\'\'\<Left>"
+ino <expr>  "   getline('.')[col('.')-1] == "\"" ? "\<right>" : "\"\"\<left>"
+ino <expr>  '   getline('.')[col('.')-1] == "\'" ? "\<right>" : "\'\'\<left>"
 
 if expand('%:e') == 'js' || expand('%:e') == 'html' || expand('%:e') == 'css'
     set ts=2
