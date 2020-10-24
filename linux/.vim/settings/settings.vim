@@ -15,10 +15,12 @@ syn enable
 syn on
 set cul
 
-colo monokai_pro
+if has('gui_running') || &t_Co > 255
+    colo monokai_pro
+    set list
+    set lcs=space:.,tab:>-
+endif
 
-set list
-set lcs=space:.,tab:>-
 set fcs=
 set cot=menu,longest
 
