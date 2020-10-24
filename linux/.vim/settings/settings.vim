@@ -25,7 +25,7 @@ set fcs=
 set cot=menu,longest
 
 set gfn=Consolas\ 14
-set go=aegiLrdm
+set go=aegid
 
 set ic
 set is
