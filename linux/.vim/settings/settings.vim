@@ -33,5 +33,10 @@ set shm-=S
 set ls=2
 set stl=%F%=%y%r\ %-14(%3c-%l/%L%)%P
 
+let &t_SI = "\e[5 q"
+let &t_SR = "\e[3 q"
+let &t_EI = "\e[1 q"
+au vimleave * exe '!echo -ne "\e[ q"'
+
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim
