@@ -1,35 +1,44 @@
 
 " mapping key
 
-no  <silent>    ;ic         :set ic!<cr>
-no  <silent>    ;hl         :set hls!<cr>
-nn  <silent>    <esc><esc>  :nohls<cr>
-
-no  <silent>    Q           :q!<cr>
-vn  <bs>        x
 ino kk          <esc>
+ino <silent>    <c-a>       <esc>ggVG
+ino <silent>    <c-v>       <esc>"+gpa
+
+nn  <silent>    <esc><esc>  :nohls<cr>
 nn  <space>     <pagedown>
 nn  <s-space>   <pageup>
-ino <silent>    <c-a>       <esc>ggVG
-no  <silent>    <c-a>       ggVG
-no  <silent>    <c-x>       "+x
-no  <silent>    <c-c>       "+y
-ino <silent>    <c-v>       <esc>"+gpa
-no  <silent>    ;n<cr>      :tabnew<cr>
-no  <silent>    <c-t>       :bro conf tabnew<cr>
-no  <silent>    <c-left>    :tabp<cr>
-no  <silent>    <c-right>   :tabn<cr>
-no  <silent>    <c-j>       :res +5<cr>
-no  <silent>    <c-k>       :res -5<cr>
-no  <silent>    <c-h>       :vert res -5<cr>
-no  <silent>    <c-l>       :vert res +5<cr>
+
+no  <silent>    Q           :q!<cr>
+no  <silent>    ;hl         :set hls!<cr>
+no  <silent>    ;ic         :set ic!<cr>
+no  <silent>    ;n<cr>      :tabe<cr>
+no  <silent>    ;rl         :so ~/.vimrc<cr>
 no  <silent>    ;rc         :e ~/.vimrc<cr>
 no  <silent>    ;s          :e ~/.vim/settings/settings.vim<cr>
 no  <silent>    ;ind        :e ~/.vim/indent/indent.vim<cr>
 no  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
-no  <silent>    ;rl         :so ~/.vimrc<cr>
 no  <silent>    ;t          :bel ter ++close<cr>
-tno <silent>    <c-n>       <c-\><c-n>
-
 no  <silent>    ;cl         :ColorToggle<cr>
 no  <silent>    ;nt         :NERDTreeToggle<cr>
+
+no  <silent>    <c-a>       ggVG
+no  <silent>    <c-c>       "+y
+no  <silent>    <c-x>       "+x
+no  <silent>    <c-left>    <c-w>h
+no  <silent>    <c-right>   <c-w>l
+no  <silent>    <c-up>      <c-w>k
+no  <silent>    <c-down>    <c-w>j
+no  <silent>    <c-j>       :res +5<cr>
+no  <silent>    <c-k>       :res -5<cr>
+no  <silent>    <c-l>       :vert res +5<cr>
+no  <silent>    <c-h>       :vert res -5<cr>
+no  <silent>    <c-t>       :bro conf tabe<cr>
+
+tno <silent>    <c-left>    <c-w>h
+tno <silent>    <c-right>   <c-w>l
+tno <silent>    <c-up>      <c-w>k
+tno <silent>    <c-down>    <c-w>j
+tno <silent>    <c-n>       <c-\><c-n>
+
+vn  <bs>        x
