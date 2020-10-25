@@ -6,7 +6,6 @@ set mouse=a
 set bo=all
 set noudf
 set nobk
-set ruler
 set bs=2
 
 set enc=utf-8
@@ -35,10 +34,12 @@ set shm-=S
 set ls=2
 set stl=%F%=%y%r\ %-14(%3c-%l/%L%)%P
 
-let &t_SI = "\e[5 q"
-let &t_SR = "\e[3 q"
-let &t_EI = "\e[1 q"
-au vimleave * exe '!echo -ne "\e[ q"'
+if !has('gui_running')
+    let &t_SI = "\e[5 q"
+    let &t_SR = "\e[3 q"
+    let &t_EI = "\e[1 q"
+    au vimleave * sil! exe '!echo -ne "\e[ q"'
+endif
 
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim
