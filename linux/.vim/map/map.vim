@@ -3,7 +3,7 @@
 fu! DelCurBk()
     let bk1 = getline('.')[col('.') - 1]
     let bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
-    if bk2 && bk2 == bk1
+    if bk2 != '' && bk2 == bk1
         return "\<right>\<bs>\<bs>"
     else
         return "\<bs>"
