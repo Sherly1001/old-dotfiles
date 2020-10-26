@@ -44,6 +44,7 @@ no  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
 no  <silent>    ;t          :bel ter ++close<cr>
 no  <silent>    ;cl         :ColorToggle<cr>
 no  <silent>    ;nt         :NERDTreeToggle<cr>
+no  <silent>    ;nm         :NERDTreeMirror<cr>
 
 no  <silent>    <c-a>       ggVG
 no  <silent>    <c-c>       "+y
