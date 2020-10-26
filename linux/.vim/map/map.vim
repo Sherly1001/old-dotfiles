@@ -1,9 +1,9 @@
 " map functions
 
 fu! DelCurBk()
-    let bk1 = getline('.')[col('.') - 1]
-    let bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
-    if bk2 != '' && bk2 == bk1
+    let l:bk1 = getline('.')[col('.') - 1]
+    let l:bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
+    if l:bk2 != '' && l:bk2 == l:bk1
         return "\<right>\<bs>\<bs>"
     else
         return "\<bs>"
