@@ -28,7 +28,7 @@ ino <expr>      '           getline('.')[col('.')-1] == "\'" ? "\<right>" : "\'\
 ino <expr>      <bs>        DelCurBk()
 ino <expr>      <s-cr>      getline('.') =~ ';$' ? "\<esc>$a" : "\<esc>$a;"
 
-nn  <silent>    <esc><esc>  :nohls<cr>
+nn  <silent>    <esc><esc>  :let @/ = ''<cr>
 nn  <space>     <pagedown>
 nn  <s-space>   <pageup>
 
@@ -41,7 +41,6 @@ nn  <silent>    ;rc         :e ~/.vimrc<cr>
 nn  <silent>    ;s          :e ~/.vim/settings/settings.vim<cr>
 nn  <silent>    ;ind        :e ~/.vim/indent/indent.vim<cr>
 nn  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
-nn  <silent>    ;cs         :let @/ = ''<cr>
 nn  <silent>    ;t          :bel ter ++close<cr>
 nn  <silent>    ;cl         :ColorToggle<cr>
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
