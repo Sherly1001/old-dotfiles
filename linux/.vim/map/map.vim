@@ -1,9 +1,32 @@
+" map functions
+
+fu! DelCurBk()
+    let bk1 = getline('.')[col('.') - 1]
+    let bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
+    if bk2 && bk2 == bk1
+        return "\<right>\<bs>\<bs>"
+    else
+        return "\<bs>"
+    endif
+endfu
 
 " mapping key
 
 ino kk          <esc>
 ino <silent>    <c-a>       <esc>ggVG
 ino <silent>    <c-v>       <esc>"+gpa
+
+ino             {           {}<left>
+ino             {<cr>       {<cr>}<esc>O
+ino <expr>      }           getline('.')[col('.')-1] == "}" ? "\<right>" : "}"
+ino             (           ()<left>
+ino <expr>      )           getline('.')[col('.')-1] == ")" ? "\<right>" : ")"
+ino             [           []<left>
+ino <expr>      ]           getline('.')[col('.')-1] == "]" ? "\<right>" : "]"
+ino <expr>      "           getline('.')[col('.')-1] == "\"" ? "\<right>" : "\"\"\<left>"
+ino <expr>      '           getline('.')[col('.')-1] == "\'" ? "\<right>" : "\'\'\<left>"
+ino <expr>      <bs>        DelCurBk()
+ino <expr>      <s-cr>      getline('.') =~ ';$' ? "\<esc>$a" : "\<esc>$a;"
 
 nn  <silent>    <esc><esc>  :nohls<cr>
 nn  <space>     <pagedown>
