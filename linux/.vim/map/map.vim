@@ -32,19 +32,20 @@ nn  <silent>    <esc><esc>  :nohls<cr>
 nn  <space>     <pagedown>
 nn  <s-space>   <pageup>
 
-no  <silent>    Q           :q!<cr>
-no  <silent>    ;hl         :set hls!<cr>
-no  <silent>    ;ic         :set ic!<cr>
-no  <silent>    ;n<cr>      :tabe<cr>
-no  <silent>    ;rl         :so ~/.vimrc<cr>
-no  <silent>    ;rc         :e ~/.vimrc<cr>
-no  <silent>    ;s          :e ~/.vim/settings/settings.vim<cr>
-no  <silent>    ;ind        :e ~/.vim/indent/indent.vim<cr>
-no  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
-no  <silent>    ;t          :bel ter ++close<cr>
-no  <silent>    ;cl         :ColorToggle<cr>
-no  <silent>    ;nt         :NERDTreeToggle<cr>
-no  <silent>    ;nm         :NERDTreeMirror<cr>
+nn  <silent>    Q           :q!<cr>
+nn  <silent>    ;hl         :set hls!<cr>
+nn  <silent>    ;ic         :set ic!<cr>
+nn  <silent>    ;n<cr>      :tabe<cr>
+nn  <silent>    ;rl         :so ~/.vimrc<cr>
+nn  <silent>    ;rc         :e ~/.vimrc<cr>
+nn  <silent>    ;s          :e ~/.vim/settings/settings.vim<cr>
+nn  <silent>    ;ind        :e ~/.vim/indent/indent.vim<cr>
+nn  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
+nn  <silent>    ;cs         :let @/ = ''<cr>
+nn  <silent>    ;t          :bel ter ++close<cr>
+nn  <silent>    ;cl         :ColorToggle<cr>
+nn  <silent>    ;nt         :NERDTreeToggle<cr>
+nn  <silent>    ;nm         :NERDTreeMirror<cr>
 
 no  <silent>    <c-a>       ggVG
 no  <silent>    <c-c>       "+y
