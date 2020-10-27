@@ -41,5 +41,12 @@ if !has('gui_running')
     au vimleave * sil! exe '!echo -ne "\e[ q"'
 endif
 
+au vimenter * sil! NERDTree | winc l
+au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
+    \ winc p | winc l | endif
+au bufenter * sil! if winnr('$') < 2
+    \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ sil! exe '!echo -ne "\e[ q"' | q! | endif
+
 so ~/.vim/map/map.vim
 so ~/.vim/indent/indent.vim
