@@ -20,8 +20,10 @@ ino             {           {}<left>
 ino             {<cr>       {<cr>}<esc>O
 ino <expr>      }           getline('.')[col('.')-1] == "}" ? "\<right>" : "}"
 ino             (           ()<left>
+ino             (<cr>       (<cr>)<esc>O
 ino <expr>      )           getline('.')[col('.')-1] == ")" ? "\<right>" : ")"
 ino             [           []<left>
+ino             [<cr>       [<cr>]<esc>O
 ino <expr>      ]           getline('.')[col('.')-1] == "]" ? "\<right>" : "]"
 ino <expr>      "           getline('.')[col('.')-1] == "\"" ? "\<right>" : "\"\"\<left>"
 ino <expr>      '           getline('.')[col('.')-1] == "\'" ? "\<right>" : "\'\'\<left>"
@@ -53,6 +55,8 @@ no  <silent>    <c-left>    <c-w>h
 no  <silent>    <c-right>   <c-w>l
 no  <silent>    <c-up>      <c-w>k
 no  <silent>    <c-down>    <c-w>j
+no  <silent>    <c-s-left>  :tabm-1<cr>
+no  <silent>    <c-s-right> :tabm+1<cr>
 no  <silent>    <c-j>       :res +5<cr>
 no  <silent>    <c-k>       :res -5<cr>
 no  <silent>    <c-l>       :vert res +5<cr>
