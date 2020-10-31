@@ -40,9 +40,9 @@ nn  <silent>    ;ic         :set ic!<cr>
 nn  <silent>    ;n<cr>      :tabe<cr>
 nn  <silent>    ;rl         :so ~/.vimrc<cr>
 nn  <silent>    ;rc         :e ~/.vimrc<cr>
-nn  <silent>    ;s          :e ~/.vim/settings/settings.vim<cr>
-nn  <silent>    ;ind        :e ~/.vim/indent/indent.vim<cr>
-nn  <silent>    ;m          :e ~/.vim/map/map.vim<cr>
+nn  <silent>    ;s          :e ~/.vim/plugin/settings.vim<cr>
+nn  <silent>    ;ind        :e ~/.vim/plugin/indent.vim<cr>
+nn  <silent>    ;m          :e ~/.vim/plugin/map.vim<cr>
 nn  <silent>    ;t          :bel ter ++close<cr>
 nn  <silent>    ;cl         :ColorToggle<cr>
 nn  <silent>    ;nt         :NERDTreeToggle<cr>

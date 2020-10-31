@@ -47,6 +47,4 @@ au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
 au bufenter * sil! if winnr('$') < 2
     \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ sil! exe '!echo -ne "\e[ q"' | q! | endif
-
-so ~/.vim/map/map.vim
-so ~/.vim/indent/indent.vim
+au bufleave * sil! w
