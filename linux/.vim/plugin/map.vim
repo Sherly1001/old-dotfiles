@@ -14,7 +14,7 @@ endfu
 
 ino kk          <esc>
 ino <silent>    <c-a>       <esc>ggVG
-ino <silent>    <c-v>       <esc>"+gpa
+ino <silent>    <c-v>       <esc>"+pa
 
 ino             {           {}<left>
 ino             {<cr>       {<cr>}<esc>O
