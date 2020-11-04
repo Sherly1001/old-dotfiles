@@ -46,5 +46,6 @@ au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
     \ winc p | winc l | endif
 au bufenter * sil! if winnr('$') < 2
     \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ sil! exe '!echo -ne "\e[ q"' | q! | endif
-au bufleave * sil! w
+    \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
+    \ q! | endif
+au bufleave * if filereadable(bufname()) | sil! w | endif
