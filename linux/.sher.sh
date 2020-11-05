@@ -23,6 +23,7 @@ alias gst='git status'
 alias gdf='git diff'
 alias gdc='git diff --cached'
 alias gd='git diff --no-index'
+gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
 
 shopt -s autocd
 exec {BASH_XTRACEFD}>/dev/null
