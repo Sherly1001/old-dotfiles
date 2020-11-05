@@ -48,4 +48,4 @@ au bufenter * sil! if winnr('$') < 2
     \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
     \ q! | endif
-au bufleave * if filereadable(bufname()) | sil! w | endif
+au bufleave * if filereadable(bufname('%')) | sil! w | endif
