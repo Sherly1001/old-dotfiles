@@ -32,6 +32,10 @@ export VISUAL=vim
 export EDITOR=vim
 
 __git_ps () {
+    # get branch for git old version
+    # br=`git branch 2>/dev/null`
+    # [[ -z $br && $? -eq 0 ]] && br='* master'
+    # br=`echo "$br" | sed -n 's/^* //p'`
     br=`git branch --show-current 2>/dev/null`
     st=`git status -s 2>/dev/null | awk '/^\w/ { i = "i"; } /^.\w/ { w = "w"; } /^\?\?/ { u = "u"; } END { print u w i }'`
 
