@@ -106,3 +106,42 @@ b() {
     echo "$cmd"
     eval "$cmd"
 }
+
+wf() {
+    local OPTIND
+    local OPTARG
+    local opt
+
+    while getopts ":adhisc:" opt; do
+        case "${opt}" in
+            a)
+                ip a
+                return;;
+            c)
+                nmcli connect up "$OPTARG" 2>/dev/null && return
+                nmcli -a device wifi connect "$OPTARG"
+                return;;
+            s)
+                nmcli connect
+                return;;
+            d)
+                nmcli device
+                return;;
+            i)
+                echo ip: `curl -s ifconfig.me`
+                return;;
+            h)
+                echo 'usage: wf [option]'
+                echo '   option:'
+                echo '      -c <ssid>   : connect to <ssid>'
+                echo '      -d          : show devices'
+                echo '      -s          : show saved connects'
+                echo '      -a          : like `ip a` command'
+                echo '      -i          : show public ip'
+                echo '      -h          : show this table'
+                echo '      no option   : show wifi list'
+                return;;
+        esac
+    done
+    nmcli device wifi list
+}
