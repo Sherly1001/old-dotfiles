@@ -1,6 +1,6 @@
 alias cls=clear
 alias py=python3
-alias ..='cd ..'
+alias jn=jupyter-notebook
 alias t='tree -L 4'
 alias tl='tree -L'
 
