@@ -1,8 +1,13 @@
 alias cls=clear
 alias py=python3
 alias jn=jupyter-notebook
+alias jl=jupyter-lab
 alias t='tree -L 4'
 alias tl='tree -L'
+
+alias sls='screen -ls'
+alias sr='screen -r'
+alias sn='screen -S'
 
 alias fm='astyle -A2s4SpHUk3W3xfxhOn'
 alias clfm="clang-format --style='{ AllowShortFunctionsOnASingleLine: Empty, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true, IncludeBlocks: Regroup, IndentCaseLabels: true, IndentWidth: 4, SortIncludes: false }' -i"
