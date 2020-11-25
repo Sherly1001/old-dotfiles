@@ -5,3 +5,6 @@ set mark-symlinked-directories on
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set visible-stats on
+
+"\t": menu-complete
+"\e[Z": menu-complete-backward
