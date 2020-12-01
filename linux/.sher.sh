@@ -1,5 +1,6 @@
 alias cls=clear
 alias py=python3
+alias ipy=ipython3
 alias jn=jupyter-notebook
 alias jl=jupyter-lab
 alias t='tree -L 4'
@@ -18,6 +19,7 @@ alias gcm='git commit -m'
 alias gad='git add'
 alias glg='git log'
 alias glo='git log --oneline'
+alias gla='git log --oneline --graph --all'
 alias gpu='git push'
 alias gpl='git pull'
 alias gft='git fetch'
