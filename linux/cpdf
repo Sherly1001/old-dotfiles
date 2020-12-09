@@ -1,0 +1,43 @@
+#!/bin/bash
+
+usage() {
+    cat <<END
+usage: $0 <opt>
+<opt>: -a: copy all files
+       -b: copy bash files
+       -v: copy vim files
+       -z: copy zsh files
+END
+    exit 1
+}
+
+while getopts :abvz opt; do
+    case $opt in
+        a) a=1;;
+        b) b=1;;
+        v) v=1;;
+        z) z=1;;
+        *) usage
+    esac
+done
+
+if [[ -z $1 ]]; then usage; fi
+
+if [[ -n $a ]] || [[ -n $b ]]; then
+    (set -x
+    cp .inputrc ~/
+    cp .bashrc ~/
+    cp .sher.sh ~/)
+fi
+
+if [[ -n $a ]] || [[ -n $v ]]; then
+    (set -x
+    ln -sf `pwd`/.vim ~/
+    ln -sf `pwd`/.vimrc ~/.vimrc)
+fi
+
+if [[ -n $a ]] || [[ -n $z ]]; then
+    (set -x
+    cp .zshrc ~/)
+fi
+
