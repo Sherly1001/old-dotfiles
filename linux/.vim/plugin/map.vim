@@ -68,5 +68,6 @@ tno <silent>    <c-right>   <c-w>l
 tno <silent>    <c-up>      <c-w>k
 tno <silent>    <c-down>    <c-w>j
 tno <silent>    <c-n>       <c-\><c-n>
+tno <silent>    <c-s-v>     <c-w>"+p
 
 vn  <bs>        x
