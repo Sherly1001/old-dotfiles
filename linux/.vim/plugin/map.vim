@@ -51,10 +51,8 @@ nn  <silent>    ;nm         :NERDTreeMirror<cr>
 no  <silent>    <c-a>       ggVG
 no  <silent>    <c-c>       "+y
 no  <silent>    <c-x>       "+x
-no  <silent>    <c-left>    <c-w>h
-no  <silent>    <c-right>   <c-w>l
-no  <silent>    <c-up>      <c-w>k
-no  <silent>    <c-down>    <c-w>j
+no  <silent>    <a-left>    :tabp<cr>
+no  <silent>    <a-right>   :tabn<cr>
 no  <silent>    <c-s-left>  :tabm-1<cr>
 no  <silent>    <c-s-right> :tabm+1<cr>
 no  <silent>    <c-j>       :res +5<cr>
@@ -63,10 +61,6 @@ no  <silent>    <c-l>       :vert res +5<cr>
 no  <silent>    <c-h>       :vert res -5<cr>
 no  <silent>    <c-t>       :bro conf tabe<cr>
 
-tno <silent>    <c-left>    <c-w>h
-tno <silent>    <c-right>   <c-w>l
-tno <silent>    <c-up>      <c-w>k
-tno <silent>    <c-down>    <c-w>j
 tno <silent>    <c-n>       <c-\><c-n>
 tno <silent>    <c-s-v>     <c-w>"+p
 
