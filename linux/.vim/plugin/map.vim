@@ -47,6 +47,7 @@ nn  <silent>    ;t          :bel ter ++close ++rows=15<cr>
 nn  <silent>    ;cl         :ColorToggle<cr>
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
 nn  <silent>    ;nm         :NERDTreeMirror<cr>
+nn  ;no         :NERDTree 
 
 no  <silent>    <c-a>       ggVG
 no  <silent>    <c-c>       "+y
