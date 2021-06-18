@@ -33,12 +33,45 @@ set wic
 set shm-=S
 set ls=2
 set stl=%F%=%y%r\ %-14(%3c-%l/%L%)%P
+set gtl=%t\ %m
 
 if !has('gui_running')
     let &t_SI = "\e[5 q"
     let &t_SR = "\e[3 q"
     let &t_EI = "\e[1 q"
     au vimleave * sil! exe '!echo -ne "\e[ q"'
+
+    function! Tabline()
+      let s = ''
+      for i in range(tabpagenr('$'))
+        let tab = i + 1
+        let winnr = tabpagewinnr(tab)
+        let buflist = tabpagebuflist(tab)
+        let bufnr = buflist[winnr - 1]
+        let bufname = bufname(bufnr)
+        let bufmodified = getbufvar(bufnr, "&mod")
+
+        let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+        let s .= (bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]')
+
+        if bufmodified
+          let s .= ' [+]'
+        endif
+
+        let s .= ' '
+      endfor
+
+      let s .= '%#TabLineFill#'
+      if (exists("g:tablineclosebutton"))
+        let s .= '%=%999XX'
+      endif
+      return s
+    endfunction
+    set tabline=%!Tabline()
+
+    hi Tabline ctermbg=232 term=None cterm=None
+    hi TablineSel ctermbg=238 term=bold cterm=bold
+    hi TablineFill ctermbg=234 term=None cterm=None
 endif
 
 au vimenter * sil! NERDTree | winc l
