@@ -12,7 +12,8 @@ endfu
 
 " mapping key
 
-ino kk          <esc>
+ino jk          <esc>
+ino kj          <esc>
 ino <silent>    <c-a>       <esc>ggVG
 ino <silent>    <c-v>       <esc>"+pa
 
