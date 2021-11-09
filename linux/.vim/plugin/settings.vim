@@ -75,11 +75,14 @@ if !has('gui_running')
     hi TablineFill ctermbg=234 term=None cterm=None
 endif
 
-" au vimenter * sil! NERDTree | winc l
-" au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
-"     \ winc p | winc l | endif
-" au bufenter * sil! if winnr('$') < 2
-"     \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-"     \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
-"     \ q! | endif
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeWinSize   = 24
+
+au vimenter * sil! NERDTree | winc l
+au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
+    \ winc p | winc l | endif
+au bufenter * sil! if winnr('$') < 2
+    \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
+    \ q! | endif
 " au bufleave * if filereadable(bufname('%')) | sil! w | endif
