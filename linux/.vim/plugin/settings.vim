@@ -34,6 +34,7 @@ set shm-=S
 set ls=2
 set stl=%F%=%y%r\ %-14(%3c-%l/%L%)%P
 set gtl=%t\ %m
+set stal=2
 
 if !has('gui_running')
     let &t_SI = "\e[5 q"
@@ -74,11 +75,11 @@ if !has('gui_running')
     hi TablineFill ctermbg=234 term=None cterm=None
 endif
 
-au vimenter * sil! NERDTree | winc l
-au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
-    \ winc p | winc l | endif
-au bufenter * sil! if winnr('$') < 2
-    \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
-    \ q! | endif
-au bufleave * if filereadable(bufname('%')) | sil! w | endif
+" au vimenter * sil! NERDTree | winc l
+" au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
+"     \ winc p | winc l | endif
+" au bufenter * sil! if winnr('$') < 2
+"     \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"     \ if !has('gui_running') | sil! exe '!echo -ne "\e[ q"' | endif |
+"     \ q! | endif
+" au bufleave * if filereadable(bufname('%')) | sil! w | endif
