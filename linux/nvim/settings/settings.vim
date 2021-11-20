@@ -57,12 +57,12 @@ aug end
 
 aug nerdtree_open
     au!
-    au vimenter * sil! NERDTree | winc l
-    au tabenter * sil! if winnr('$') < 2 | NERDTreeMirror |
+    au VimEnter * sil! NERDTree | winc l
+    au TabEnter * sil! if winnr('$') < 2 | NERDTreeMirror |
         \ winc p | winc l | endif
-    au bufenter * sil! if winnr('$') < 2
+    au BufEnter NERD_tree_* sil! if winnr('$') < 2
         \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-        \ if !has('gui_running') | sil! set gcr=a:hor20 | endif |
+        \ set gcr=a:hor20 |
         \ q! | endif
 aug end
 

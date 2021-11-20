@@ -1,4 +1,7 @@
-ino jk                  <esc>
+ino jk                      <esc>
+
+ino <expr>      <tab>       pumvisible() ? '<c-n>' : '<tab>'
+ino <expr>      <s-tab>     pumvisible() ? '<c-p>' : '<s-tab>'
 
 nn  Q                       :q!<cr>
 nn  <silent>    <esc><esc>  :let @/ = ''<cr>
@@ -18,6 +21,8 @@ nn  <silent>    <c-j>       :res +5<cr>
 nn  <silent>    <c-k>       :res -5<cr>
 nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
+
+nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
 
 tno <silent>    <c-n>       <c-\><c-n>
 tno <silent>    <c-h>       <c-w>
