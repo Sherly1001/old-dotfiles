@@ -35,6 +35,7 @@ set ls=2
 set stl=%F%=%y%r\ %-14(%3c-%l/%L%)%P
 set gtl=%t\ %m
 set stal=2
+set timeout timeoutlen=250
 
 if !has('gui_running')
     let &t_SI = "\e[5 q"
