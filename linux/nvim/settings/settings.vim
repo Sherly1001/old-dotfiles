@@ -59,10 +59,10 @@ aug nerdtree_open
     au!
     au VimEnter * sil! NERDTree | winc l
     au TabEnter * sil! if winnr('$') < 2 | NERDTreeMirror |
-        \ winc p | winc l | endif
+        \ winc l | endif
     au BufEnter NERD_tree_* sil! if winnr('$') < 2
         \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-        \ set gcr=a:hor20 |
+        \ if tabpagenr('$') < 2 | set gcr=a:hor20 | endif |
         \ q! | endif
 aug end
 
