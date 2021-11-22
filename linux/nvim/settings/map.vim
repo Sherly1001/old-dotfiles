@@ -1,9 +1,23 @@
 " map functions
 
-fu! DelCurBk()
+fu! IsBks()
     let l:bk1 = getline('.')[col('.') - 1]
     let l:bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
     return l:bk2 != '' && l:bk2 == l:bk1
+endfu
+
+fu! PreIsOpenBk()
+    let l:bk = getline('.')[col('.') - 2]
+    return stridx("{[(", l:bk) >= 0
+endfu
+
+fu! IsCloseBk()
+    let l:bk = getline('.')[col('.') - 2]
+    return stridx("{[(", l:bk) >= 0
+endfu
+
+fu! IsChar(c)
+    return a:c == getline('.')[col('.') - 1]
 endfu
 
 " mapping key
@@ -14,15 +28,13 @@ ino <silent>    <c-a>       <esc>ggVG
 ino <silent>    <c-v>       <esc>"+pa
 
 ino             {           {}<left>
-ino             {<cr>       {<cr>}<esc>O
-ino <expr>      }           getline('.')[col('.')-1] == '}' ? '<right>' : '}'
 ino             (           ()<left>
-ino             (<cr>       (<cr>)<esc>O
-ino <expr>      )           getline('.')[col('.')-1] == ')' ? '<right>' : ')'
 ino             [           []<left>
-ino             [<cr>       [<cr>]<esc>O
-ino <expr>      ]           getline('.')[col('.')-1] == ']' ? '<right>' : ']'
-ino <expr>      <bs>        DelCurBk() ? '<right><bs><bs>' : '<bs>'
+ino <expr>      }           IsChar('}') ? '<right>' : '}'
+ino <expr>      )           IsChar(')') ? '<right>' : ')'
+ino <expr>      ]           IsChar(']') ? '<right>' : ']'
+ino <expr>      <bs>        IsBks() ? '<bs><del>' : '<bs>'
+ino <expr>      <cr>        PreIsOpenBk() ? '<cr><esc>O' : '<cr>'
 
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
@@ -37,7 +49,7 @@ nn  <silent>    ;id         :e ~/.config/nvim/settings/indent.vim<cr>
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
 nn  ;no                     :NERDTree 
 
-nn  <silent>    ;n<cr>      :tabe<cr>
+nn  <silent>    ;nn         :tabe<cr>
 nn  <silent>    <a-right>   :tabn<cr>
 nn  <silent>    <a-left>    :tabp<cr>
 nn  <silent>    ;t          :bel sp term://bash<cr>:resize 14<cr>
