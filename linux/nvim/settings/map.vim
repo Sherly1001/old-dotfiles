@@ -1,7 +1,31 @@
-ino jk                      <esc>
+" map functions
 
-ino <expr>      <tab>       pumvisible() ? '<c-n>' : '<tab>'
-ino <expr>      <s-tab>     pumvisible() ? '<c-p>' : '<s-tab>'
+fu! DelCurBk()
+    let l:bk1 = getline('.')[col('.') - 1]
+    let l:bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
+    return l:bk2 != '' && l:bk2 == l:bk1
+endfu
+
+" mapping key
+
+ino jk                      <esc>
+ino kj                      <esc>
+ino <silent>    <c-a>       <esc>ggVG
+ino <silent>    <c-v>       <esc>"+pa
+
+ino             {           {}<left>
+ino             {<cr>       {<cr>}<esc>O
+ino <expr>      }           getline('.')[col('.')-1] == '}' ? '<right>' : '}'
+ino             (           ()<left>
+ino             (<cr>       (<cr>)<esc>O
+ino <expr>      )           getline('.')[col('.')-1] == ')' ? '<right>' : ')'
+ino             [           []<left>
+ino             [<cr>       [<cr>]<esc>O
+ino <expr>      ]           getline('.')[col('.')-1] == ']' ? '<right>' : ']'
+ino <expr>      <bs>        DelCurBk() ? '<right><bs><bs>' : '<bs>'
+
+ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
+ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
 
 nn  Q                       :q!<cr>
 nn  <silent>    <esc><esc>  :let @/ = ''<cr>
