@@ -6,16 +6,6 @@ fu! IsBks()
     return l:bk2 != '' && l:bk2 == l:bk1
 endfu
 
-fu! PreIsOpenBk()
-    let l:bk = getline('.')[col('.') - 2]
-    return stridx("{[(", l:bk) >= 0
-endfu
-
-fu! IsCloseBk()
-    let l:bk = getline('.')[col('.') - 2]
-    return stridx("{[(", l:bk) >= 0
-endfu
-
 fu! IsChar(c)
     return a:c == getline('.')[col('.') - 1]
 endfu
@@ -33,8 +23,8 @@ ino             [           []<left>
 ino <expr>      }           IsChar('}') ? '<right>' : '}'
 ino <expr>      )           IsChar(')') ? '<right>' : ')'
 ino <expr>      ]           IsChar(']') ? '<right>' : ']'
-ino <expr>      <bs>        IsBks() ? '<bs><del>' : '<bs>'
-ino <expr>      <cr>        PreIsOpenBk() ? '<cr><esc>O' : '<cr>'
+ino <expr>      <bs>        IsBks() ? '<bs><del>'  : '<bs>'
+ino <expr>      <cr>        IsBks() ? '<cr><esc>O' : '<cr>'
 
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
