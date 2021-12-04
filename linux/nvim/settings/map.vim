@@ -14,8 +14,6 @@ endfu
 
 ino jk                      <esc>
 ino kj                      <esc>
-ino <silent>    <c-a>       <esc>ggVG
-ino <silent>    <c-v>       <esc>"+pa
 
 ino             {           {}<left>
 ino             (           ()<left>
@@ -39,9 +37,12 @@ nn  <silent>    ;id         :e ~/.config/nvim/settings/indent.vim<cr>
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
 nn  ;no                     :NERDTree 
 
-nn  <silent>    ;nn         :tabe<cr>
+nn  <silent>    <c-t>       :tabe<cr>
+nn  <silent>    <c-n>       :tabe .<cr>
 nn  <silent>    <a-right>   :tabn<cr>
 nn  <silent>    <a-left>    :tabp<cr>
+nn  <silent>    <a-s-left>  :tabm -1<cr>
+nn  <silent>    <a-s-right> :tabm +1<cr>
 nn  <silent>    ;t          :bel sp term://bash<cr>:resize 14<cr>
 nn  <silent>    <c-j>       :res +5<cr>
 nn  <silent>    <c-k>       :res -5<cr>
@@ -49,6 +50,7 @@ nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
 
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
+nn  <silent>    <c-f>       :CocCommand prettier.formatFile<cr>
 
 tno <silent>    <c-n>       <c-\><c-n>
 tno <silent>    <c-h>       <c-w>
