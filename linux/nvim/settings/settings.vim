@@ -52,19 +52,19 @@ aug end
 
 aug leave_cursor
     au!
-    au vimleave * sil! set gcr=a:hor20
+    au vimleave * sil! set gcr=a:hor20-blinkwait175-blinkoff150-blinkon175
 aug end
 
-aug nerdtree_open
-    au!
-    au VimEnter * sil! NERDTree | winc l
-    au TabEnter * sil! if winnr('$') < 2 | NERDTreeMirror |
-        \ winc l | endif
-    au BufEnter NERD_tree_* sil! if winnr('$') < 2
-        \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-        \ if tabpagenr('$') < 2 | set gcr=a:hor20 | endif |
-        \ q! | endif
-aug end
+"aug nerdtree_open
+"    au!
+"    au VimEnter * sil! NERDTree | winc l
+"    au TabEnter * sil! if winnr('$') < 2 | NERDTreeMirror |
+"        \ winc l | endif
+"    au BufEnter NERD_tree_* sil! if winnr('$') < 2
+"        \ && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"        \ if tabpagenr('$') < 2 | set gcr=a:hor20-blinkwait175-blinkoff150-blinkon175 | endif |
+"        \ q! | endif
+"aug end
 
 aug terminal_mode
     au!
