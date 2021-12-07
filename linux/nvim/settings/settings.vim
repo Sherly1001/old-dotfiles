@@ -40,6 +40,9 @@ set stl=%F%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
 set stal=2
 set tal=%!Tabline()
 
+let g:netrw_liststyle = 3
+let g:netrw_browser_split = 4
+
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize   = 24
 let g:NERDTreeStatusline="%{''}"
