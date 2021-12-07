@@ -27,7 +27,7 @@ ino <expr>      <cr>        IsBks() ? '<cr><esc>O' : '<cr>'
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
 
-nn  Q                       :q!<cr>
+nn  <expr>      Q           matchstr(buffer_name(), '^NERD_tree_') != '' ? ':q<cr>' : ':q!<cr>'
 nn  <silent>    <esc><esc>  :let @/ = ''<cr>
 nn  <silent>    ;rl         :so $MYVIMRC<cr>
 nn  <silent>    ;rc         :e $MYVIMRC<cr>
