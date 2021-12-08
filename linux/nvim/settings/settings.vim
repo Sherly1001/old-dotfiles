@@ -46,6 +46,7 @@ let g:netrw_browser_split = 4
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize   = 24
 let g:NERDTreeStatusline="%{''}"
+let g:NERDTreeShowHidden= 1
 
 aug dynamic_smartcase
     au!
