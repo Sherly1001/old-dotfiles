@@ -35,7 +35,7 @@ set to tm=250
 
 set list
 set lcs=tab:>-,trail:.
-set fcs=vert:\ 
+set fcs=vert:\ ,fold:\ 
 set stl=%F%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
 set stal=2
 set tal=%!Tabline()
