@@ -44,6 +44,7 @@ export VISUAL=vim
 export EDITOR=vim
 
 __git_ps () {
+    [[ `git branch 2>&1 1>/dev/null` ]] && return 0
     # get branch for git old version
     # br=`git branch 2>/dev/null`
     # [[ -z $br && $? -eq 0 ]] && br='* master'
@@ -65,7 +66,8 @@ __git_ps () {
         bk="\033[1;33m"
     fi
 
-    [[ $br ]] && echo -e "$bk[$cl$br$bk]\033[m"
+    [[ -z $br ]] && br="no branch"
+    echo -e "$bk[$cl$br$bk]\033[m"
 }
 
 __sher_ps="\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w \[\$(__git_ps)\]\n"
