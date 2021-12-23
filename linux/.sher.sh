@@ -10,8 +10,13 @@ alias sls='screen -ls'
 alias sr='screen -r'
 alias sn='screen -S'
 
+alias cm='cmake -B build -S .'
+alias cmb='cmake --build build'
+
 alias fm='astyle -A2s4SpHUk3W3xfxhOn'
-alias clfm="clang-format --style='{ AllowShortFunctionsOnASingleLine: Empty, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true, IncludeBlocks: Regroup, IndentCaseLabels: true, IndentWidth: 4, SortIncludes: false }' -i"
+clfm() {
+    clang-format --style='{ AllowShortFunctionsOnASingleLine: Empty, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true, IncludeBlocks: Regroup, IndentCaseLabels: true, IndentWidth: 4, SortIncludes: false }' "$@"
+}
 
 alias gco='git checkout'
 alias gcoo='gco master'
