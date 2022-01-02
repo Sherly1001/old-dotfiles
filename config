@@ -145,10 +145,10 @@ bindsym $mod+r              exec --no-startup-id rofi -show run
 bindsym $mod+Mod2+F12       exec --no-startup-id redshift-gtk
 
 # bright
-bindsym Mod2+XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/scripts/light.sh -ns -A 5
-bindsym Mod2+XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/light.sh -ns -U 5
-bindsym Mod2+XF86Tools             exec --no-startup-id ~/.config/i3/scripts/light.sh -ns -A 5
-bindsym Mod2+XF86Calculator        exec --no-startup-id ~/.config/i3/scripts/light.sh -ns -U 5
+bindsym Mod2+XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/scripts/light.sh -s -A 5
+bindsym Mod2+XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/light.sh -s -U 5
+bindsym Mod2+XF86Tools             exec --no-startup-id ~/.config/i3/scripts/light.sh -s -A 5
+bindsym Mod2+XF86Calculator        exec --no-startup-id ~/.config/i3/scripts/light.sh -s -U 5
 
 # volume
 bindsym Mod2+XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume.sh -s 5%+
