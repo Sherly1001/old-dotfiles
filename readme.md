@@ -55,3 +55,4 @@ pulseaudio --start
 - [flameshot](https://wiki.archlinux.org/title/Flameshot) - take screenshots
 - [dunst](https://wiki.archlinux.org/title/Dunst) - notification daemons
 - [rofi](https://wiki.archlinux.org/title/Rofi) - application launcher
+- [yad](https://archlinux.org/packages/community/x86_64/yad/) - show polybar calendar
