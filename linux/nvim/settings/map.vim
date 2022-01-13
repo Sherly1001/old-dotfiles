@@ -1,5 +1,30 @@
 " map functions
 
+let s:last_buffs_cache = '~/.cache/nvim/last_buffs'
+try
+    let s:last_buffs = readfile(expand(s:last_buffs_cache))
+catch
+    let s:last_buffs = []
+endtry
+
+fu! CloseBuff()
+    let l:is_nerdtree = matchstr(buffer_name(), '^NERD_tree_') != ''
+    if l:is_nerdtree | q | return | endif
+    if buffer_name() != ''
+        call add(s:last_buffs, expand('%:p'))
+        call writefile(s:last_buffs, expand(s:last_buffs_cache))
+    endif
+    q!
+endfu
+
+fu! OpenLastBuff()
+    let l:buffer_name = get(s:last_buffs, -1, '')
+    if l:buffer_name == '' | return | endif
+    call remove(s:last_buffs, -1)
+    call writefile(s:last_buffs, expand(s:last_buffs_cache))
+    exec 'tabe ' . l:buffer_name
+endfu
+
 fu! IsBks()
     let l:bk1 = getline('.')[col('.') - 1]
     let l:bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
@@ -27,7 +52,8 @@ ino <expr>      <cr>        IsBks() ? '<cr><esc>O' : '<cr>'
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
 
-nn  <expr>      Q           matchstr(buffer_name(), '^NERD_tree_') != '' ? ':q<cr>' : ':q!<cr>'
+nn  <silent>    Q           :call CloseBuff()<cr>
+nn  <silent>    T           :call OpenLastBuff()<cr>
 nn  <silent>    <esc><esc>  :let @/ = ''<cr>
 nn  <silent>    ;rl         :so $MYVIMRC<cr>
 nn  <silent>    ;rc         :e $MYVIMRC<cr>
