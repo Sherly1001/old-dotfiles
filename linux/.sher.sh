@@ -35,7 +35,7 @@ alias gst='git status'
 alias gdf='git diff'
 alias gdc='git diff --cached'
 alias gd='git diff --no-index'
-ghp() { git subtree -P "'$1'" push origin gh-pages }
+ghp() { git subtree -P "$1" push origin gh-pages ;}
 gi() { curl -sL "https://www.toptal.com/developers/gitignore/api/$@" ;}
 
 shopt -s autocd
