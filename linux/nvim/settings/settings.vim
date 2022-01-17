@@ -1,6 +1,8 @@
 func! Tabline()
-  let s = '%#TabLine#'
-  for i in range(tabpagenr('$'))
+  let s = '%#TabLineFill#'
+  let numtab = tabpagenr('$')
+
+  for i in range(numtab)
     let tab = i + 1
     let winnr = tabpagewinnr(tab)
     let buflist = tabpagebuflist(tab)
@@ -8,14 +10,16 @@ func! Tabline()
     let bufname = bufname(bufnr)
     let bufmodified = getbufvar(bufnr, "&mod")
 
-    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '')
-    let s .= (bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]')
-    let s .= (bufmodified ? ' [+]' : '')
+    let s .= '%' . tab . 'T'
+    let s .= tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
+    let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'
+    let s .= bufmodified ? ' [+]' : ''
+    let s .= '%T'
 
-    let s .= '%#TabLine# '
+    let s .= '%#TabLineFill#'
+    let s .= tab < numtab ? ' ' : ''
   endfor
 
-  let s .= '%#TabLineFill#'
   return s
 endfunc
 
