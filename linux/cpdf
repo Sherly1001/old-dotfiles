@@ -30,6 +30,7 @@ if [[ -n $a ]] || [[ -n $b ]]; then
     cp .dircolors ~/
     cp .inputrc ~/
     cp .bashrc ~/
+    cp .clang-format ~/
     cp .sher.sh ~/)
 fi
 

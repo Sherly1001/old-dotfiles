@@ -15,7 +15,8 @@ alias cmb='cmake --build build'
 
 alias fm='astyle -A2s4SpHUk3W3xfxhOn'
 clfm() {
-    clang-format --style='{ AllowShortFunctionsOnASingleLine: Empty, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortLoopsOnASingleLine: true, IncludeBlocks: Regroup, IndentCaseLabels: true, IndentWidth: 4, SortIncludes: false }' "$@"
+    style="`sed -re '/(\s*#.*$|^\s*$)/d' -e 's/$/,/' ~/.clang-format`"
+    clang-format --style="{ $style }" "$@"
 }
 
 alias gco='git checkout'
