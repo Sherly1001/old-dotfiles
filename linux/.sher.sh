@@ -15,7 +15,7 @@ alias cmb='cmake --build build'
 
 alias fm='astyle -A2s4SpHUk3W3xfxhOn'
 clfm() {
-    style="`sed -re '/(\s*#.*$|^\s*$)/d' -e 's/$/,/' ~/.clang-format`"
+    style=`sed -re '/(\s*#.*$|^\s*$)/d' -e 's/$/,/' ~/.clang-format`
     clang-format --style="{ $style }" "$@"
 }
 
