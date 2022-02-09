@@ -172,12 +172,13 @@ for_window [class="copyq"] floating enable
 for_window [class="Python"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="gnuplot_qt"] floating enable
+for_window [urgent="latest"] focus
 
 # startup commands
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Tapping Enabled' 1
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec --no-startup-id picom -b
-exec --no-startup-id polybar -r
+exec --no-startup-id picom -b && polybar -r
 exec --no-startup-id dunst
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id numlockx
