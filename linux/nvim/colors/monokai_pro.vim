@@ -27,7 +27,7 @@ hi StatusLine ctermfg=231 ctermbg=59 cterm=bold guifg=#fcfcfa guibg=#696769 gui=
 hi StatusLineNC ctermfg=231 ctermbg=59 cterm=NONE guifg=#fcfcfa guibg=#696769 gui=NONE
 hi TabLine ctermfg=15 ctermbg=232 cterm=NONE gui=NONE guibg=#080808
 hi TabLineSel ctermbg=238 term=bold cterm=bold gui=bold guibg=#585858
-hi TabLineFill ctermbg=234 term=NONE cterm=NONE gui=NONE
+hi TabLineFill ctermbg=234 term=NONE cterm=NONE gui=NONE guibg=#121212
 hi Pmenu ctermfg=150 ctermbg=234 cterm=NONE guifg=#a9dc76 guibg=#1c1c1c gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#403e41 gui=NONE
 hi IncSearch ctermfg=236 ctermbg=221 cterm=NONE guifg=#2d2a2e guibg=#ffd866 gui=NONE
