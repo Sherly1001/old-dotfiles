@@ -69,6 +69,12 @@ nn  <silent>    <a-right>   :tabn<cr>
 nn  <silent>    <a-left>    :tabp<cr>
 nn  <silent>    <a-s-left>  :tabm -1<cr>
 nn  <silent>    <a-s-right> :tabm +1<cr>
+
+for i in range(1, 9)
+    let map="nn  <silent>    <a-" . i . ">   :tabn " . i . "<cr>"
+    exec map
+endfor
+
 nn  <silent>    ;t          :bel sp term://bash<cr>:resize 14<cr>
 nn  <silent>    <c-j>       :res +5<cr>
 nn  <silent>    <c-k>       :res -5<cr>
