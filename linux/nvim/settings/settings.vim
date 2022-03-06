@@ -23,26 +23,30 @@ func! Tabline()
   return s
 endfunc
 
-set nu
-set rnu
-set ic
-set wic
-set scs
-set cul
-set noudf
-set nobk
-set bs=2
-set bo=all
+set number
+set relativenumber
+set ignorecase
+set wildignorecase
+set smartcase
+set cursorline
+set noundofile
+set nobackup
+set backspace=2
+set belloff=all
 set mouse=a
+set timeout timeoutlen=250
 colo monokai_pro
-set to tm=250
 
 set list
-set lcs=tab:>-,trail:.
-set fcs=vert:\ ,fold:\ 
-set stl=%F%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
-set stal=2
-set tal=%!Tabline()
+set listchars=tab:>-,trail:.
+set fillchars=vert:\ ,fold:\ 
+set statusline=%F%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
+set showtabline=2
+set tabline=%!Tabline()
+
+if exists('g:neovide')
+    set guifont=Consolas:h10
+endif
 
 let g:netrw_liststyle = 3
 let g:netrw_browser_split = 4
