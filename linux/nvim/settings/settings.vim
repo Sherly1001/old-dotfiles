@@ -45,7 +45,7 @@ set showtabline=2
 set tabline=%!Tabline()
 
 if exists('g:neovide')
-    set guifont=Consolas:h10
+    set guifont=Consolas:h9
 endif
 
 let g:netrw_liststyle = 3
