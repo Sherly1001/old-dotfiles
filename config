@@ -23,6 +23,17 @@ set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
 
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
+workspace $ws8 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws10 output HDMI-1
+
 # change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -179,6 +190,7 @@ for_window [urgent="latest"] focus
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Tapping Enabled' 1
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Natural Scrolling Enabled' 1
 exec --no-startup-id picom -b && polybar -r
+exec --no-startup-id MONITOR=HDMI-1 polybar -r
 exec --no-startup-id dunst
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id numlockx
