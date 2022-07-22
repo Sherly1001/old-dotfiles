@@ -43,6 +43,8 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
 bindsym $mod+Control+$left workspace prev
 bindsym $mod+Control+$right workspace next
 bindsym $mod+Tab workspace back_and_forth
