@@ -10,7 +10,10 @@ set $left h
 set $right l
 set $up k
 set $down j
+
 set $terminal alacritty
+set $broswer google-chrome-beta
+set $broswer_private --incognito
 
 set $ws1 "1 "
 set $ws2 "2 "
@@ -40,8 +43,8 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+bindsym $mod+Control+$left workspace prev
+bindsym $mod+Control+$right workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused window
@@ -150,8 +153,10 @@ bindsym $mod+Shift+e exit
 # binding keys
 bindsym $mod+Return         workspace $ws2, exec --no-startup-id $terminal
 bindsym $mod+Shift+Return   exec --no-startup-id $terminal
-bindsym $mod+g              exec --no-startup-id google-chrome-stable
-bindsym $mod+Shift+g        exec --no-startup-id google-chrome-stable --incognito
+bindsym $mod+g              exec --no-startup-id $broswer
+bindsym $mod+Shift+g        exec --no-startup-id $broswer $broswer_private
+bindsym $mod+m              exec --no-startup-id firefox
+bindsym $mod+Shift+m        exec --no-startup-id firefox --private-window
 bindsym $mod+Mod2+Print     exec --no-startup-id flameshot gui
 bindsym $mod+p              exec --no-startup-id rofi -show drun -modi drun
 bindsym $mod+r              exec --no-startup-id rofi -show run
