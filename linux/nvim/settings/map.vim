@@ -75,7 +75,8 @@ for i in range(1, 9)
     exec map
 endfor
 
-nn  <silent>    ;t          :bel sp term://bash<cr>:resize 14<cr>
+nn  <silent>    ;tt         :bel sp term://bash<cr>:resize 14<cr>
+nn  <silent>    ;tv         :bel vs term://bash<cr>
 nn  <silent>    <c-j>       :res +5<cr>
 nn  <silent>    <c-k>       :res -5<cr>
 nn  <silent>    <c-h>       :vert res +5<cr>
