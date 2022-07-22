@@ -65,10 +65,10 @@ nn  ;no                     :NERDTree
 
 nn  <silent>    <c-t>       :tabe<cr>
 nn  <silent>    <c-n>       :tabe .<cr>
-nn  <silent>    <a-right>   :tabn<cr>
-nn  <silent>    <a-left>    :tabp<cr>
-nn  <silent>    <a-s-left>  :tabm -1<cr>
-nn  <silent>    <a-s-right> :tabm +1<cr>
+nn  <silent>    <a-h>       :tabn<cr>
+nn  <silent>    <a-l>       :tabp<cr>
+nn  <silent>    <a-s-h>     :tabm -1<cr>
+nn  <silent>    <a-s-l>     :tabm +1<cr>
 
 for i in range(1, 9)
     let map="nn  <silent>    <a-" . i . ">   :tabn " . i . "<cr>"
@@ -82,8 +82,15 @@ nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
 
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
-nn  <silent>    <c-f>       :CocCommand prettier.formatFile<cr>
+" nn  <silent>    <c-f>       :FormatCode<cr>
+nn  <expr>      <silent>    <c-f>
+    \ index(['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'vue', 'html', 'css', 'scss'], &ft) < 0
+    \ ? ':FormatCode<cr>'
+    \ : ':CocCommand prettier.formatFile<cr>'
 
 tno <silent>    <c-n>       <c-\><c-n>
 tno <silent>    <c-h>       <c-w>
 tno <silent>    <c-w>       <c-\><c-n><c-w>
+
+vno <silent>    <c-c>       "+y
+vno <silent>    <c-x>       "+x

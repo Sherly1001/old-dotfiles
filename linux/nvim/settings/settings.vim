@@ -56,6 +56,11 @@ let g:NERDTreeWinSize   = 24
 let g:NERDTreeStatusline="%{''}"
 let g:NERDTreeShowHidden= 1
 
+let g:rustfmt_options = "--edition 2021"
+
+call glaive#Install()
+Glaive codefmt rustfmt_options=`['--edition', '2021']`
+
 aug dynamic_smartcase
     au!
     au CmdLineEnter : set nosmartcase
