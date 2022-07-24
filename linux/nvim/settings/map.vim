@@ -65,8 +65,8 @@ nn  ;no                     :NERDTree
 
 nn  <silent>    <c-t>       :tabe<cr>
 nn  <silent>    <c-n>       :tabe .<cr>
-nn  <silent>    <a-h>       :tabn<cr>
-nn  <silent>    <a-l>       :tabp<cr>
+nn  <silent>    <a-h>       :tabp<cr>
+nn  <silent>    <a-l>       :tabn<cr>
 nn  <silent>    <a-s-h>     :tabm -1<cr>
 nn  <silent>    <a-s-l>     :tabm +1<cr>
 
