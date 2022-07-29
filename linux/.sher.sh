@@ -22,6 +22,7 @@ clfm() {
 alias gco='git checkout'
 alias gcoo='gco master'
 alias gcm='git commit -m'
+alias gcma='git commit --amend'
 alias gad='git add'
 alias glg='git log'
 alias glo='git log --oneline'
