@@ -61,6 +61,16 @@ let g:rustfmt_options = "--edition 2021"
 call glaive#Install()
 Glaive codefmt rustfmt_options=`['--edition', '2021']`
 
+hi GitGutterAdd    guifg=#009900 guibg=#3a3a3a ctermfg=green ctermbg=237
+hi GitGutterChange guifg=#bbbb00 guibg=#3a3a3a ctermfg=yellow ctermbg=237
+hi GitGutterDelete guifg=#ff2222 guibg=#3a3a3a ctermfg=red ctermbg=237
+
+aug git_gutter
+    au TextChanged * GitGutter
+    au TextChangedI * GitGutter
+    au TextChangedP * GitGutter
+aug end
+
 aug dynamic_smartcase
     au!
     au CmdLineEnter : set nosmartcase

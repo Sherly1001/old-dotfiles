@@ -10,6 +10,7 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 so ~/.config/nvim/settings/settings.vim
