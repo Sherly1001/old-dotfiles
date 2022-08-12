@@ -9,6 +9,7 @@ Plug 'TovarishFin/vim-solidity'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'zivyangll/git-blame.vim'
 call plug#end()
 
 so ~/.config/nvim/settings/settings.vim
