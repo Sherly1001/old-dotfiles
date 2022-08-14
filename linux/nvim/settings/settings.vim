@@ -58,6 +58,9 @@ let g:NERDTreeShowHidden= 1
 
 let g:rustfmt_options = "--edition 2021"
 
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size  = 1
+
 call glaive#Install()
 Glaive codefmt rustfmt_options=`['--edition', '2021']`
 
