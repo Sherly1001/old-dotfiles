@@ -89,9 +89,10 @@ nn  <silent>    <c-l>       :vert res -5<cr>
 nn  <silent>    gf          :GitGutterFold<cr>
 nn              gl          :call gitblame#echo()<cr>
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
-" nn  <silent>    <c-f>       :FormatCode<cr>
 nn  <expr>      <silent>    <c-f>
-    \ index(['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'vue', 'html', 'css', 'scss'], &ft) < 0
+    \ index(['javascript', 'typescript',
+    \        'javascriptreact', 'typescriptreact',
+    \        'json', 'vue', 'html', 'css', 'scss'], &ft) < 0
     \ ? ':FormatCode<cr>'
     \ : ':CocCommand prettier.formatFile<cr>'
 
