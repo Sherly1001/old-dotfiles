@@ -163,6 +163,7 @@ bindsym $mod+Mod2+Print     exec --no-startup-id flameshot gui
 bindsym $mod+p              exec --no-startup-id rofi -show drun -modi drun
 bindsym $mod+r              exec --no-startup-id rofi -show run
 bindsym $mod+Mod2+F12       exec --no-startup-id redshift-gtk
+bindsym $mod+Mod1+l         exec --no-startup-id i3lock -i ~/.config/i3/imgs/sayu_ls.jpg
 
 # bright
 bindsym Mod2+XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/scripts/light.sh -s -A 5
@@ -191,6 +192,8 @@ for_window [class="Python"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="gnuplot_qt"] floating enable
+for_window [class="Slack"] floating enable
+for_window [class="slack"] sticky enable
 for_window [urgent="latest"] focus
 
 # startup commands
