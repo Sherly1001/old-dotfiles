@@ -163,7 +163,7 @@ bindsym $mod+Mod2+Print     exec --no-startup-id flameshot gui
 bindsym $mod+p              exec --no-startup-id rofi -show drun -modi drun
 bindsym $mod+r              exec --no-startup-id rofi -show run
 bindsym $mod+Mod2+F12       exec --no-startup-id redshift-gtk
-bindsym $mod+Mod1+l         exec --no-startup-id i3lock -i ~/.config/i3/imgs/sayu_ls.jpg
+bindsym $mod+Mod1+l         exec --no-startup-id ~/.config/i3/scripts/i3-lock.sh
 
 # bright
 bindsym Mod2+XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/scripts/light.sh -s -A 5
