@@ -25,12 +25,15 @@ hi VertSplit ctermfg=236 ctermbg=59 cterm=NONE guifg=#696769 guibg=#696769 gui=N
 hi MatchParen ctermfg=204 ctermbg=NONE cterm=underline guifg=#ff6188 guibg=NONE gui=underline
 hi StatusLine ctermfg=231 ctermbg=59 cterm=bold guifg=#fcfcfa guibg=#696769 gui=bold
 hi StatusLineNC ctermfg=231 ctermbg=59 cterm=NONE guifg=#fcfcfa guibg=#696769 gui=NONE
-hi Pmenu ctermfg=150 ctermbg=NONE cterm=NONE guifg=#a9dc76 guibg=NONE gui=NONE
+hi TabLine ctermfg=15 ctermbg=232 cterm=NONE gui=NONE guibg=#080808
+hi TabLineSel ctermbg=238 term=bold cterm=bold gui=bold guibg=#585858
+hi TabLineFill ctermbg=234 term=NONE cterm=NONE gui=NONE guibg=#121212
+hi Pmenu ctermfg=150 ctermbg=234 cterm=NONE guifg=#a9dc76 guibg=#1c1c1c gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#403e41 gui=NONE
 hi IncSearch ctermfg=236 ctermbg=221 cterm=NONE guifg=#2d2a2e guibg=#ffd866 gui=NONE
 hi Search ctermfg=NONE ctermbg=240 cterm=NONE guifg=NONE guibg=#6c6c6c gui=NONE
 hi Directory ctermfg=209 ctermbg=NONE cterm=NONE guifg=#fc9867 guibg=NONE gui=NONE
-hi Folded ctermfg=189 ctermbg=60 cterm=NONE guifg=#d7d7ff guibg=#5f5f87 gui=NONE
+hi Folded ctermfg=189 ctermbg=237 cterm=NONE guifg=#d7d7ff guibg=#3a3a3a gui=NONE
 hi Normal ctermfg=231 ctermbg=NONE cterm=NONE guifg=#fcfcfa guibg=#1c1d1f gui=NONE
 hi Boolean ctermfg=147 ctermbg=NONE cterm=NONE guifg=#ab9df2 guibg=NONE gui=NONE
 hi Character ctermfg=147 ctermbg=NONE cterm=NONE guifg=#ab9df2 guibg=NONE gui=NONE
@@ -54,7 +57,7 @@ hi Number ctermfg=147 ctermbg=NONE cterm=NONE guifg=#ab9df2 guibg=NONE gui=NONE
 hi Special ctermfg=147 ctermbg=NONE cterm=NONE guifg=#ab9df2 guibg=NONE gui=NONE
 hi Operator ctermfg=204 ctermbg=NONE cterm=NONE guifg=#ff6188 guibg=NONE gui=NONE
 hi PreProc ctermfg=204 ctermbg=NONE cterm=NONE guifg=#ff6188 guibg=NONE gui=NONE
-hi SpecialKey ctermfg=234 ctermbg=NONE cterm=NONE guifg=#2f2f2f guibg=NONE gui=NONE
+hi SpecialKey ctermfg=240 ctermbg=NONE cterm=NONE guifg=#2f2f2f guibg=NONE gui=NONE
 hi Statement ctermfg=204 ctermbg=NONE cterm=NONE guifg=#ff6188 guibg=NONE gui=NONE
 hi StorageClass ctermfg=116 ctermbg=NONE cterm=NONE guifg=#78dce8 guibg=NONE gui=italic
 hi String ctermfg=221 ctermbg=NONE cterm=NONE guifg=#ffd866 guibg=NONE gui=NONE
