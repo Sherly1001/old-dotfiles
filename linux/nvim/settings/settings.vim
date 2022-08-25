@@ -6,6 +6,7 @@ set smartcase
 set cursorline
 set noundofile
 set nobackup
+set noswapfile
 set backspace=2
 set belloff=all
 set mouse=a
