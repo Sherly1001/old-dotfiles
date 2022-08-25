@@ -1,28 +1,3 @@
-func! Tabline()
-  let s = '%#TabLineFill#'
-  let numtab = tabpagenr('$')
-
-  for i in range(numtab)
-    let tab = i + 1
-    let winnr = tabpagewinnr(tab)
-    let buflist = tabpagebuflist(tab)
-    let bufnr = buflist[winnr - 1]
-    let bufname = bufname(bufnr)
-    let bufmodified = getbufvar(bufnr, "&mod")
-
-    let s .= '%' . tab . 'T'
-    let s .= tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
-    let s .= bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]'
-    let s .= bufmodified ? ' [+]' : ''
-    let s .= '%T'
-
-    let s .= '%#TabLineFill#'
-    let s .= tab < numtab ? ' ' : ''
-  endfor
-
-  return s
-endfunc
-
 set number
 set relativenumber
 set ignorecase
@@ -40,9 +15,9 @@ colo monokai_pro
 set list
 set listchars=tab:>-,trail:.
 set fillchars=vert:\ ,fold:\ 
-set statusline=%F%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
+set statusline=%f%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
 set showtabline=2
-set tabline=%!Tabline()
+set tabline=%!funcs#tabline()
 
 if exists('g:neovide')
     set guifont=Consolas:h9
