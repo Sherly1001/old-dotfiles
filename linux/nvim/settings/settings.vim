@@ -78,3 +78,8 @@ aug terminal_mode
     au BufEnter term://* call nvim_input('i')
     au TermClose * call nvim_input('<cr>')
 aug end
+
+aug check_file_changed
+    au!
+    au FocusGained * :checktime
+aug end
