@@ -1,3 +1,4 @@
+" vi: sw=2 ts=2
 " settings functions
 
 fu! s:evaluate_tabline(tabline)
@@ -102,14 +103,4 @@ fu! funcs#open_last_buff()
   call remove(s:last_buffs, -1)
   call writefile(s:last_buffs, expand(s:last_buffs_cache))
   exec 'tabe ' . l:buffer_name
-endfu
-
-fu! funcs#is_bks()
-  let l:bk1 = getline('.')[col('.') - 1]
-  let l:bk2 = "])}\"'"[stridx("[({\"'", getline('.')[col('.') - 2])]
-  return l:bk2 != '' && l:bk2 == l:bk1
-endfu
-
-fu! funcs#is_char(c)
-  return a:c == getline('.')[col('.') - 1]
 endfu

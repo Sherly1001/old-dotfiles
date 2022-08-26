@@ -1,19 +1,30 @@
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ryanoasis/vim-devicons'
-Plug 'lilydjwg/colorizer'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" utils plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" base plugins
+Plug 'lilydjwg/colorizer'
 Plug 'preservim/nerdtree'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'pangloss/vim-javascript'
+Plug 'ryanoasis/vim-devicons'
+Plug 'jiangmiao/auto-pairs'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+" git plugins
+Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
+
+" lang plugins
 Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'TovarishFin/vim-solidity'
+
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'zivyangll/git-blame.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'lukas-reineke/indent-blankline.nvim'
+
 call plug#end()
 
 so ~/.config/nvim/settings/settings.vim

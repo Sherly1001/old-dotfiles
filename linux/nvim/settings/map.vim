@@ -1,15 +1,6 @@
 ino jk                      <esc>
 ino kj                      <esc>
 
-ino             {           {}<left>
-ino             (           ()<left>
-ino             [           []<left>
-ino <expr>      }           funcs#is_char('}') ? '<right>' : '}'
-ino <expr>      )           funcs#is_char(')') ? '<right>' : ')'
-ino <expr>      ]           funcs#is_char(']') ? '<right>' : ']'
-ino <expr>      <bs>        funcs#is_bks() ? '<bs><del>'  : '<bs>'
-ino <expr>      <cr>        funcs#is_bks() ? '<cr><esc>O' : '<cr>'
-
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
 
