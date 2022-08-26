@@ -1,4 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'ryanoasis/vim-devicons'
+Plug 'lilydjwg/colorizer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'

@@ -11,7 +11,7 @@ set backspace=2
 set belloff=all
 set mouse=a
 set timeout timeoutlen=250
-colo monokai_pro
+colo onedark
 
 set list
 set listchars=tab:>-,trail:.
@@ -24,6 +24,7 @@ if exists('g:neovide')
     set guifont=Consolas:h9
     let g:neovide_cursor_antialiasing = v:true
     let g:neovide_cursor_animation_length = 0.13
+    let g:neovide_cursor_vfx_opacity = 500.0
     let g:neovide_cursor_vfx_mode = 'railgun'
     let g:neovide_cursor_vfx_particle_density = 10.0
 endif
@@ -41,12 +42,17 @@ let g:rustfmt_options = "--edition 2021"
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size  = 1
 
+" loading the plugin
+let g:webdevicons_enable = 1
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
 call glaive#Install()
 Glaive codefmt rustfmt_options=`['--edition', '2021']`
 
-hi GitGutterAdd    guifg=#009900 guibg=#3a3a3a ctermfg=green ctermbg=237
-hi GitGutterChange guifg=#bbbb00 guibg=#3a3a3a ctermfg=yellow ctermbg=237
-hi GitGutterDelete guifg=#ff2222 guibg=#3a3a3a ctermfg=red ctermbg=237
+" hi GitGutterAdd    guifg=#009900 guibg=#3a3a3a ctermfg=green ctermbg=237
+" hi GitGutterChange guifg=#bbbb00 guibg=#3a3a3a ctermfg=yellow ctermbg=237
+" hi GitGutterDelete guifg=#ff2222 guibg=#3a3a3a ctermfg=red ctermbg=237
 
 aug git_gutter
     au!
