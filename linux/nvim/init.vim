@@ -13,7 +13,7 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 so ~/.config/nvim/settings/settings.vim

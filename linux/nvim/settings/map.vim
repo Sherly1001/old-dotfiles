@@ -49,7 +49,6 @@ nn  <silent>    <c-k>       :res -5<cr>
 nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
 
-nn  <silent>    ;ig         :IndentGuidesToggle<cr>
 nn  <silent>    gf          :GitGutterFold<cr>
 nn              gl          :call gitblame#echo()<cr>
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
