@@ -21,6 +21,8 @@ nn  <silent>    ;rc         :e $MYVIMRC<cr>
 nn  <silent>    ;s          :e ~/.config/nvim/settings/settings.vim<cr>
 nn  <silent>    ;m          :e ~/.config/nvim/settings/map.vim<cr>
 nn  <silent>    ;id         :e ~/.config/nvim/settings/indent.vim<cr>
+nn  <expr>      ;vi
+    \   &keymap == '' ? ':set keymap=vietnamese-vni<cr>' : ':set keymap=<cr>'
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
 nn  ;no                     :NERDTree 
 
