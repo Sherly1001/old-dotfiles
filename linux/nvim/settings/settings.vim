@@ -47,6 +47,8 @@ let g:webdevicons_enable = 1
 " adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
 
+let g:AutoPairsMapCh = 0
+
 call glaive#Install()
 Glaive codefmt rustfmt_options=`['--edition', '2021']`
 

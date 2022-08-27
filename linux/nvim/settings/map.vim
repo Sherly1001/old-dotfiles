@@ -1,5 +1,9 @@
-ino jk                      <esc>
-ino kj                      <esc>
+ino jk          <esc>
+ino kj          <esc>
+ino <c-h>       <left>
+ino <c-j>       <down>
+ino <c-k>       <up>
+ino <c-l>       <right>
 
 ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
 ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
