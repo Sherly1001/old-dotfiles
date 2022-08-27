@@ -16,7 +16,7 @@ colo onedark
 set list
 set listchars=tab:>-,trail:.
 set fillchars=vert:\ ,fold:\ 
-set statusline=%f%=%{coc#status()}\ %y%r\ %-14(%3c-%l/%L%)%P
+set statusline=%f%=%{funcs#coc_status()}\ %y%r\ %-14(%3c-%l/%L%)%P
 set showtabline=2
 set tabline=%!funcs#tabline()
 
@@ -49,18 +49,16 @@ let g:webdevicons_enable_nerdtree = 1
 
 let g:AutoPairsMapCh = 0
 
-call glaive#Install()
-Glaive codefmt rustfmt_options=`['--edition', '2021']`
-
-" hi GitGutterAdd    guifg=#009900 guibg=#3a3a3a ctermfg=green ctermbg=237
-" hi GitGutterChange guifg=#bbbb00 guibg=#3a3a3a ctermfg=yellow ctermbg=237
-" hi GitGutterDelete guifg=#ff2222 guibg=#3a3a3a ctermfg=red ctermbg=237
+if exists('*glaive#Install') && exists(':Glaive')
+    call glaive#Install()
+    Glaive codefmt rustfmt_options=`['--edition', '2021']`
+endif
 
 aug git_gutter
     au!
-    au TextChanged * GitGutter
-    au TextChangedI * GitGutter
-    au TextChangedP * GitGutter
+    au TextChanged  * if exists(':GitGutter') | GitGutter | endif
+    au TextChangedI * if exists(':GitGutter') | GitGutter | endif
+    au TextChangedP * if exists(':GitGutter') | GitGutter | endif
 aug end
 
 aug dynamic_smartcase

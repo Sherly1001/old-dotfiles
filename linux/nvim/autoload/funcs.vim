@@ -77,6 +77,10 @@ fu! funcs#tabline()
   return '%#TabLineFill#' . l:tabline . '%#TabLineFill#' . '%=' . l:pertab
 endfu
 
+fu! funcs#coc_status()
+  return exists('*coc#status') ? coc#status() : ''
+endfu
+
 
 " map functions
 
