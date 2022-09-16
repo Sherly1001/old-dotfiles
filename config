@@ -14,6 +14,8 @@ set $down j
 set $terminal alacritty
 set $broswer google-chrome-beta
 set $broswer_private --incognito
+set $broswer_2 brave
+set $broswer_2_private --incognito
 
 set $ws1 "1 "
 set $ws2 "2 "
@@ -157,6 +159,8 @@ bindsym $mod+Return         workspace $ws2, exec --no-startup-id $terminal
 bindsym $mod+Shift+Return   exec --no-startup-id $terminal
 bindsym $mod+g              exec --no-startup-id $broswer
 bindsym $mod+Shift+g        exec --no-startup-id $broswer $broswer_private
+bindsym $mod+b              exec --no-startup-id $broswer_2
+bindsym $mod+Shift+b        exec --no-startup-id $broswer_2 $broswer_2_private
 bindsym $mod+m              exec --no-startup-id firefox
 bindsym $mod+Shift+m        exec --no-startup-id firefox --private-window
 bindsym $mod+Mod2+Print     exec --no-startup-id flameshot gui
