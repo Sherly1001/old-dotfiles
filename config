@@ -17,6 +17,26 @@ set $broswer_private --incognito
 set $broswer_2 brave
 set $broswer_2_private --incognito
 
+set $color_red              #E06C75
+set $color_dark_red         #BE5046
+set $color_green            #98C379
+set $color_yellow           #E5C07B
+set $color_dark_yellow      #D19A66
+set $color_blue             #61AFEF
+set $color_purple           #C678DD
+set $color_cyan             #56B6C2
+set $color_white            #ABB2BF
+set $color_black            #282C34
+set $color_foreground       #ABB2BF
+set $color_background       #282C34
+set $color_comment_grey     #5C6370
+set $color_gutter_fg_grey   #4B5263
+set $color_cursor_grey      #2C323C
+set $color_visual_grey      #3E4452
+set $color_menu_grey        #3E4452
+set $color_special_grey     #3B4048
+set $color_vertsplit        #3E4452
+
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
@@ -126,13 +146,13 @@ mode "resize" {
 }
 bindsym $mod+backslash mode "resize"
 
-# colorclass            border  backgr. text    indicator child_border
-client.focused          #4a4a56 #4a4a56 #ffffff #888888   #4a4a56
-client.focused_inactive #222222 #2f2f2f #ffffff #484e50   #222222
-client.unfocused        #222222 #2a2a2a #888888 #484e50   #222222
-client.urgent           #3f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
+# colorclass            border          backgr.         text            indicator           child_border
+client.focused          $color_green    $color_black    $color_white    $color_yellow       $color_green
+client.focused_inactive $color_black    $color_black    $color_white    $color_comment_grey $color_black
+client.unfocused        $color_black    $color_black    $color_white    $color_comment_grey $color_black
+client.urgent           $color_red      $color_red      $color_white    $color_red          $color_red
+client.placeholder      $color_black    $color_black    $color_white    $color_black        $color_black
+client.background       $color_black
 
 # layout keys
 bindsym $mod+f fullscreen toggle
@@ -186,7 +206,7 @@ default_floating_border normal
 hide_edge_borders both
 focus_follows_mouse no
 
-gaps top 26
+# gaps top 26
 gaps inner 15
 # smart_gaps on
 
