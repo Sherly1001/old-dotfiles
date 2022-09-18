@@ -10,6 +10,7 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " git plugins
 Plug 'zivyangll/git-blame.vim'

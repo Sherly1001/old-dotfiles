@@ -42,12 +42,19 @@ let g:rustfmt_options = "--edition 2021"
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size  = 1
 
-" loading the plugin
 let g:webdevicons_enable = 1
-" adding the flags to NERDTree
 let g:webdevicons_enable_nerdtree = 1
 
 let g:AutoPairsMapCh = 0
+
+" let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': [],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 
 if exists('*glaive#Install') && exists(':Glaive')
     call glaive#Install()
