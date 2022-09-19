@@ -1,0 +1,121 @@
+#!/bin/bash
+
+post_install() {
+    pulseaudio --start
+    systemctl enable lightdm
+}
+
+install_yay() {
+    (cd /tmp
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si)
+}
+
+pacman_dependencies=(
+    # fonts
+    ttf-joypixels
+    ttf-font-awesome
+    noto-fonts
+    noto-fonts-cjk
+
+    # base
+    xorg
+    lightdm
+    lightdm-webkit2-greeter
+    i3-gaps
+    bluez
+
+    # volume
+    alsa-utils
+    alsa-plugins
+    pulseaudio-alsa
+    pavucontrol
+    sox
+
+    # tools
+    neovim
+    neovide
+    inotify-tools
+    alacritty
+    numlockx
+    copyq
+    feh
+    flameshot
+    rofi
+    yad
+)
+
+yay_dependencies=(
+    # fonts
+    consolas-font
+
+    # base
+    lightdm-webkit-theme-eather
+    picom-jonaburg-git
+    polybar-git
+)
+
+usage() {
+    cat <<END
+usage: $0 <opt>
+<opt>: -a: copy all files
+       -b: copy bash files
+       -n: link nvim files
+       -c: link .config/files
+       -f: copy fonts
+       -i: install dependent packages
+END
+    exit 1
+}
+
+while getopts :abncfi opt; do
+    case $opt in
+        a) a=1;;
+        b) b=1;;
+        n) n=1;;
+        c) c=1;;
+        f) f=1;;
+        i) i=1;;
+        *) usage
+    esac
+done
+
+if [[ -z $1 ]]; then usage; fi
+
+if [[ -n $a ]] || [[ -n $b ]]; then
+    (set -x
+    cp .dircolors ~/
+    cp .inputrc ~/
+    cp .bashrc ~/
+    cp .bash_aliases ~/
+    cp .clang-format ~/
+    cp .sher.sh ~/)
+fi
+
+if [[ -n $a ]] || [[ -n $n ]]; then
+    mkdir -p ~/.config
+    (set -x
+    ln -sf `pwd`/.config/nvim ~/.config)
+fi
+
+if [[ -n $a ]] || [[ -n $c ]]; then
+    mkdir -p ~/.config
+    for config in `ls .config`; do
+        config="`pwd`/.config/$config"
+        (set -x
+        ln -sf "$config" ~/.config)
+    done
+fi
+
+if [[ -n $a ]] || [[ -n $f ]]; then
+    mkdir -p ~/.local/share/fonts
+    cp -v ./fonts/* ~/.local/share/fonts
+fi
+
+if [[ -n $a ]] || [[ -n $i ]]; then
+    sudo pacman -S --noconfirm "${pacman_dependencies[@]}"
+    if ! command -v yay; then install_yay fi
+    yay -S --noconfirm "${yay_dependencies[@]}"
+    post_install
+fi
