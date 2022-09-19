@@ -115,7 +115,7 @@ fi
 
 if [[ -n $a ]] || [[ -n $i ]]; then
     sudo pacman -S --noconfirm "${pacman_dependencies[@]}"
-    if ! command -v yay; then install_yay fi
+    if ! command -v yay; then install_yay; fi
     yay -S --noconfirm "${yay_dependencies[@]}"
     post_install
 fi
