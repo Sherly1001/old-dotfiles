@@ -5,16 +5,18 @@ usage() {
 usage: $0 <opt>
 <opt>: -a: copy all files
        -b: copy bash files
-       -n: copy nvim files
+       -n: link nvim files
+       -c: link .config/files
 END
     exit 1
 }
 
-while getopts :abvnz opt; do
+while getopts :abnc opt; do
     case $opt in
         a) a=1;;
         b) b=1;;
         n) n=1;;
+        c) c=1;;
         *) usage
     esac
 done
@@ -34,5 +36,14 @@ fi
 if [[ -n $a ]] || [[ -n $n ]]; then
     mkdir -p ~/.config
     (set -x
-    ln -sf `pwd`/nvim ~/.config)
+    ln -sf `pwd`/.config/nvim ~/.config)
+fi
+
+if [[ -n $a ]] || [[ -n $c ]]; then
+    mkdir -p ~/.config
+    for config in `ls .config`; do
+        config="`pwd`/.config/$config"
+        (set -x
+        ln -sf "$config" ~/.config)
+    done
 fi
