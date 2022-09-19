@@ -51,7 +51,7 @@ yay_dependencies=(
     consolas-font
 
     # base
-    lightdm-webkit-theme-eather
+    lightdm-webkit-theme-aether
     picom-jonaburg-git
     polybar-git
 )
