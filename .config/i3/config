@@ -223,8 +223,7 @@ for_window [urgent="latest"] focus
 # startup commands
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Tapping Enabled' 1
 exec --no-startup-id xinput set-prop 'DELL0844:00 04F3:3074 Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec --no-startup-id picom -b && polybar -r
-exec --no-startup-id MONITOR=HDMI-1 polybar -r
+exec --no-startup-id picom -b && ~/.config/i3/scripts/polybar/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id numlockx

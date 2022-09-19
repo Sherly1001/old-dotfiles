@@ -5,14 +5,8 @@ icon_muted=🔇
 
 headphones=(   )
 
-while getopts ":v:m:" opt; do
-    case $opt in
-        v) color_enable="$OPTARG";;
-        m) muted_color_enable="$OPTARG";;
-        *) OPTIND=$((OPTIND-1)); break;;
-    esac
-done
-shift $((OPTIND-1))
+color_enable="%{u`polybar -q -d green colors`}"
+muted_color_enable="%{u`polybar -q -d red colors`}"
 
 show_volume() {
     outp=(`amixer -D pulse sget Master |

@@ -3,6 +3,7 @@
 post_install() {
     pulseaudio --start
     systemctl enable lightdm
+    sudo chmod +s /usr/bin/light
 }
 
 install_yay() {
@@ -24,6 +25,7 @@ pacman_dependencies=(
     lightdm
     lightdm-webkit2-greeter
     i3-gaps
+    polybar
     bluez
 
     # volume
@@ -37,6 +39,7 @@ pacman_dependencies=(
     neovim
     neovide
     inotify-tools
+    light
     alacritty
     numlockx
     copyq
@@ -53,7 +56,6 @@ yay_dependencies=(
     # base
     lightdm-webkit-theme-aether
     picom-jonaburg-git
-    polybar-git
 )
 
 usage() {
