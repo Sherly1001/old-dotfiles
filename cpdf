@@ -7,16 +7,18 @@ usage: $0 <opt>
        -b: copy bash files
        -n: link nvim files
        -c: link .config/files
+       -f: copy fonts
 END
     exit 1
 }
 
-while getopts :abnc opt; do
+while getopts :abncf opt; do
     case $opt in
         a) a=1;;
         b) b=1;;
         n) n=1;;
         c) c=1;;
+        f) f=1;;
         *) usage
     esac
 done
@@ -46,4 +48,9 @@ if [[ -n $a ]] || [[ -n $c ]]; then
         (set -x
         ln -sf "$config" ~/.config)
     done
+fi
+
+if [[ -n $a ]] || [[ -n $f ]]; then
+    mkdir -p ~/.local/share/fonts
+    cp -v ./fonts/* ~/.local/share/fonts
 fi
