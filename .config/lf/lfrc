@@ -1,0 +1,9 @@
+set icons true
+set hidden true
+
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+map o $neovide .
