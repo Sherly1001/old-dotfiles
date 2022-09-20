@@ -2,10 +2,10 @@
 
 ## Screenshots
 
-![](./imgs/screenshots/img_1.png)
-![](./imgs/screenshots/img_2.png)
-![](./imgs/screenshots/img_3.png)
-![](./imgs/screenshots/img_4.png)
+![](./imgs/screenshots/img_1.jpeg)
+![](./imgs/screenshots/img_2.jpeg)
+![](./imgs/screenshots/img_3.jpeg)
+![](./imgs/screenshots/img_4.jpeg)
 
 ## Installation
 
