@@ -11,6 +11,7 @@ set backspace=2
 set belloff=all
 set mouse=a
 set timeout timeoutlen=250
+set updatetime=100
 colo onedark
 
 set list
@@ -61,13 +62,6 @@ if exists('*glaive#Install') && exists(':Glaive')
     call glaive#Install()
     Glaive codefmt rustfmt_options=`['--edition', '2021']`
 endif
-
-aug git_gutter
-    au!
-    au TextChanged  * if exists(':GitGutter') | GitGutter | endif
-    au TextChangedI * if exists(':GitGutter') | GitGutter | endif
-    au TextChangedP * if exists(':GitGutter') | GitGutter | endif
-aug end
 
 aug dynamic_smartcase
     au!
