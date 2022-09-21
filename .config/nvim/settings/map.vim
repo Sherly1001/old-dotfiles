@@ -44,6 +44,9 @@ nn  <silent>    <c-k>       :res -5<cr>
 nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
 
+nn  <silent>    [n          <plug>(coc-diagnostic-next)
+nn  <silent>    [p          <plug>(coc-diagnostic-prev)
+
 nn  <silent>    gf          :GitGutterFold<cr>
 nn              gl          :call gitblame#echo()<cr>
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
