@@ -44,6 +44,8 @@ nn  <silent>    <c-k>       :res -5<cr>
 nn  <silent>    <c-h>       :vert res +5<cr>
 nn  <silent>    <c-l>       :vert res -5<cr>
 
+nn  <silent>    ;cl         :ColorToggle<cr>
+
 nn  <silent>    [n          <plug>(coc-diagnostic-next)
 nn  <silent>    [p          <plug>(coc-diagnostic-prev)
 
