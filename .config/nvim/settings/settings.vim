@@ -77,8 +77,8 @@ aug end
 aug terminal_mode
     au!
     au TermOpen * setlocal statusline=%{b:term_title} | set nornu | set nonu
-    au BufEnter term://* call nvim_input('i')
-    au TermClose * call nvim_input('<cr>')
+    au BufEnter term://* startinsert
+    au TermClose * :q
 aug end
 
 aug check_file_changed
