@@ -5,8 +5,12 @@ ino <c-j>       <down>
 ino <c-k>       <up>
 ino <c-l>       <right>
 
-ino <expr>      <tab>       pumvisible() ? '<down>' : '<tab>'
-ino <expr>      <s-tab>     pumvisible() ? '<up>'   : '<s-tab>'
+ino <expr>      <tab>       exists('*coc#pum#visible') && coc#pum#visible()
+                            \ ? coc#pum#next(0) : '<tab>'
+ino <expr>      <s-tab>     exists('*coc#pum#visible') && coc#pum#visible()
+                            \ ? coc#pum#prev(0) : '<s-tab>'
+ino <expr>      <cr>        exists('*coc#pum#visible') && coc#pum#visible()
+                            \ ? coc#pum#confirm() : '<cr>'
 
 nn  <silent>    Q           :call funcs#close_buff()<cr>
 nn  <silent>    T           :call funcs#open_last_buff()<cr>
@@ -46,8 +50,8 @@ nn  <silent>    <c-l>       :vert res -5<cr>
 
 nn  <silent>    ;cl         :ColorToggle<cr>
 
-nn  <silent>    [n          <plug>(coc-diagnostic-next)
-nn  <silent>    [p          <plug>(coc-diagnostic-prev)
+nn  <silent>    ]g          <plug>(coc-diagnostic-next)
+nn  <silent>    [g          <plug>(coc-diagnostic-prev)
 
 nn  <silent>    gf          :GitGutterFold<cr>
 nn              gl          :call gitblame#echo()<cr>
