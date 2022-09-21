@@ -32,10 +32,11 @@ endif
 let g:netrw_liststyle = 3
 let g:netrw_browser_split = 4
 
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize   = 24
-let g:NERDTreeStatusline="%{''}"
-let g:NERDTreeShowHidden= 1
+let g:NERDTreeMinimalUI         =   1
+let g:NERDTreeShowHidden        =   1
+let g:NERDTreeShowLineNumbers   =   1
+let g:NERDTreeWinSize           =   24
+let g:NERDTreeStatusline        =   "%{''}"
 
 let g:rustfmt_options = "--edition 2021"
 
