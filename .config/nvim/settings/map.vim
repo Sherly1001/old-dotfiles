@@ -14,7 +14,7 @@ ino <expr>      <cr>        exists('*coc#pum#visible') && coc#pum#visible()
 
 nn  <silent>    Q           :call funcs#close_buff()<cr>
 nn  <silent>    T           :call funcs#open_last_buff()<cr>
-nn  <silent>    <esc><esc>  :let @/ = ''<cr>
+nn  <silent>    <esc>       :nohl<cr>
 nn  <silent>    ;rl         :so $MYVIMRC<cr>
 nn  <silent>    ;rc         :e $MYVIMRC<cr>
 nn  <silent>    ;s          :e ~/.config/nvim/settings/settings.vim<cr>
