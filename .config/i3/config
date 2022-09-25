@@ -201,9 +201,10 @@ bindsym Mod2+XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volu
 bindsym Mod2+XF86AudioMute        exec --no-startup-id ~/.config/i3/scripts/volume.sh -s toggle
 
 # settings
+# for_window [all] border pixel 2
 default_border pixel 2
 default_floating_border normal
-hide_edge_borders both
+hide_edge_borders smart
 focus_follows_mouse no
 
 # gaps top 26
