@@ -7,3 +7,4 @@ set cleaner ctpvclear
 &ctpvquit $id
 
 map o $neovide .
+map D delete
