@@ -120,3 +120,13 @@ wf() {
     done
     nmcli device wifi list
 }
+
+cmnf() {
+    link="https://command-not-found.com/$1"
+    data=`curl -s "$link"`
+    match=(`echo "$data" | grep -n '</\?dl' | cut -f1 -d:`)
+
+    echo "$data" | \
+    sed -n "${match[0]},${match[1]} p" | \
+    sed -n "s/<code>\(.*\)<\/code>/\1/p"
+}
