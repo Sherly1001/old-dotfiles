@@ -56,6 +56,8 @@ nn  <silent>    [g          <plug>(coc-diagnostic-prev)
 nn  <silent>    gf          :GitGutterFold<cr>
 nn              gl          :call gitblame#echo()<cr>
 nn  <silent>    <s-k>       :call CocAction('doHover')<cr>
+nn  <silent>    <c-i>       :CocCommand tsserver.sortImports<cr>
+nn  <silent>    <c-.>       :CocCommand tsserver.executeAutofix<cr>
 nn  <expr>      <silent>    <c-f>
     \ index(['javascript', 'typescript',
     \        'javascriptreact', 'typescriptreact',

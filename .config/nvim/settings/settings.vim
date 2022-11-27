@@ -34,6 +34,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browser_split = 4
 
 let g:NERDTreeMinimalUI         =   1
+let g:NERDTreeMinimalMenu       =   1
 let g:NERDTreeShowHidden        =   1
 let g:NERDTreeShowLineNumbers   =   1
 let g:NERDTreeWinSize           =   24
@@ -50,9 +51,10 @@ let g:webdevicons_enable_nerdtree = 1
 let g:AutoPairsMapCh = 0
 
 " let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'w'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_user_command = 'rg --files %s'
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': [],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
