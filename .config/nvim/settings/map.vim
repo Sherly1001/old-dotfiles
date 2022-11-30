@@ -25,6 +25,9 @@ nn  <expr>      ;vi
 nn  <silent>    ;nt         :NERDTreeToggle<cr>
 nn  ;no                     :NERDTree 
 
+nn  <silent>    <a-j>       <c-]>
+nn  <silent>    <a-k>       <c-t>
+
 nn  <silent>    <c-t>       :tabe<cr>
 nn  <silent>    <c-n>       :tabe .<cr>
 nn  <silent>    <a-h>       :tabp<cr>
@@ -71,3 +74,6 @@ tno <silent>    <c-w>       <c-\><c-n><c-w>
 
 vno <silent>    <c-c>       "+y
 vno <silent>    <c-x>       "+x
+
+ino <silent>    <s-insert>  <c-r>*
+ino <silent>    <c-s-v>     <c-r>*
