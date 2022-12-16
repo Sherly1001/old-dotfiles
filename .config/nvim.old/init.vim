@@ -21,6 +21,7 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'TovarishFin/vim-solidity'
+Plug 'modocache/move.vim'
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'

@@ -40,8 +40,7 @@ nn  <silent>    <a-s-left>  :tabm -1<cr>
 nn  <silent>    <a-s-right> :tabm +1<cr>
 
 for i in range(1, 9)
-    let map="nn  <silent>    <a-" . i . ">   :tabn " . i . "<cr>"
-    exec map
+    exe "nn <silent> <a-" . i . "> :tabn " . i . "<cr>"
 endfor
 
 nn  <silent>    ;tt         :bel sp term://bash <bar> resize 14<cr>
