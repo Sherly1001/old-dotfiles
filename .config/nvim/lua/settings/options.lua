@@ -76,11 +76,6 @@ g.ctrlp_prompt_mappings = {
   ['AcceptSelection("t")'] = {'<cr>', '<2-LeftMouse>'},
 }
 
-if vim.fn.exists('*glaive#Install') ~= 0 and vim.fn.exists(':Glaive') ~= 0 then
-  vim.call('glaive#Install')
-  vim.cmd [[ Glaive codefmt rustfmt_options=`['--edition', '2021']` ]]
-end
-
 local au = {}
 
 au['dynamic_startcase'] = {

@@ -41,10 +41,6 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'TovarishFin/vim-solidity'
 Plug 'modocache/move.vim'
 
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-
 vim.call('plug#end')
 
 package.loaded['settings'] = nil
