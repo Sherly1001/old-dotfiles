@@ -30,6 +30,7 @@ keymap('n', '<a-j>', '<c-]>', opts_sl)
 keymap('n', '<a-k>', '<c-t>', opts_sl)
 
 keymap('n', '<c-t>', ':tabe<cr>', opts_sl)
+keymap('n', '<s-t>', ':tab sp<cr>', opts_sl)
 keymap('n', '<c-n>', ':tabe .<cr>', opts_sl)
 keymap('n', '<a-h>', ':tabp<cr>', opts_sl)
 keymap('n', '<a-l>', ':tabn<cr>', opts_sl)
@@ -73,7 +74,7 @@ keymap('n', ';vi', [[ &keymap == '' ? ':set keymap=vietnamese-vni<cr>' : ':set k
 
 keymap('n', '<f2>', ':lua vim.lsp.buf.rename()<cr>', opts)
 keymap('n', '<s-k>', ':lua vim.lsp.buf.hover()<cr>', opts_sl)
-keymap('n', '<c-f>', ':lua vim.lsp.buf.format()<cr>', opts_sl)
+keymap('n', '<c-f>', ':lua vim.lsp.buf.format({ async = false })<cr>', opts_sl)
 keymap('n', '<c-m>', ':lua vim.lsp.buf.code_action({ apply = true })<cr>', opts_sl)
 keymap('n', '<s-l>', ':lua vim.lsp.buf.definition({ reuse_win = true })<cr>', opts_sl)
 
