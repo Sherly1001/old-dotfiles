@@ -5,9 +5,10 @@ local system_signs = require('settings.signs')
 require('mason-lspconfig').setup()
 require('mason').setup {
   ui = {
+    border = 'rounded',
     icons = {
-      package_installed = system_signs.installed,
       package_pending = system_signs.pending,
+      package_installed = system_signs.installed,
       package_uninstalled = system_signs.uninstalled,
     }
   }
@@ -16,6 +17,7 @@ require('mason').setup {
 -- setup lsp server
 local cfg = require('lspconfig')
 local cap = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig.ui.windows').default_options.border = 'rounded'
 
 package.preload['lsp.lsp'] = nil
 local lsp = require('lsp.lsp')
