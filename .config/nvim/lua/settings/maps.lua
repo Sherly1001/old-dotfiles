@@ -63,7 +63,7 @@ keymap('n', ';rl', ':so $MYVIMRC<cr>', opts_sl)
 keymap('n', ';rc', ':e $MYVIMRC<cr>', opts_sl)
 keymap('n', ';s', ':e ~/.config/nvim/lua/settings/options.lua<cr>', opts_sl)
 keymap('n', ';m', ':e ~/.config/nvim/lua/settings/maps.lua<cr>', opts_sl)
-keymap('n', ';l', ':e ~/.config/nvim/lua/settings/lsp.lua<cr>', opts_sl)
+keymap('n', ';l', ':e ~/.config/nvim/lua/lsp/lsp.lua<cr>', opts_sl)
 keymap('n', ';id', ':e ~/.config/nvim/lua/settings/indent.lua<cr>', opts_sl)
 
 keymap('n', ';cl', ':ColorToggle<cr>', opts_sl)

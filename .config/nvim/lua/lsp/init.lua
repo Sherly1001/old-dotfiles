@@ -1,11 +1,7 @@
 -- vi: sw=2 ts=2
 
 local m = {
-  'settings.funcs',
-  'settings.options',
-  'settings.maps',
-  'settings.indent',
-  'lsp',
+  'lsp.lsp-cfg',
 }
 
 for i = 1, #m do

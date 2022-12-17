@@ -1,12 +1,14 @@
 -- vi: ts=2 sw=2
 
+local system_signs = require('settings.signs')
+
 require('mason-lspconfig').setup()
 require('mason').setup {
   ui = {
     icons = {
-      package_installed = '✓',
-      package_pending = '➜',
-      package_uninstalled = '✗'
+      package_installed = system_signs.installed,
+      package_pending = system_signs.pending,
+      package_uninstalled = system_signs.uninstalled,
     }
   }
 }
@@ -15,20 +17,8 @@ require('mason').setup {
 local cfg = require('lspconfig')
 local cap = require('cmp_nvim_lsp').default_capabilities()
 
-local lsp = {
-  bashls = {},
-  tsserver = {},
-  clangd = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim' },
-        },
-      },
-    },
-  },
-}
+package.preload['lsp.lsp'] = nil
+local lsp = require('lsp.lsp')
 
 local gopts = {
   capabilities = cap,
@@ -90,18 +80,19 @@ cmp.setup {
     { name = 'vsnip' },
   }, {
     { name = 'path' },
+    { name = 'buffer' },
   })
 }
 
 local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = 'DiagnosticSignError', text = system_signs.error },
+  { name = 'DiagnosticSignWarn', text = system_signs.warn },
+  { name = 'DiagnosticSignHint', text = system_signs.hint },
+  { name = 'DiagnosticSignInfo', text = system_signs.info },
 }
 
 for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
 end
 
 local config = {
@@ -114,20 +105,20 @@ local config = {
   severity_sort = true,
   float = {
     focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
+    style = 'minimal',
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
   },
 }
 
 vim.diagnostic.config(config)
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded',
 })
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded',
 })
