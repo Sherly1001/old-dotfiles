@@ -23,6 +23,18 @@ local langs = {
 
 local lsp = {
   bashls = {},
+  jsonls = {
+    settings = {
+      json = {
+        schemas = {
+          {
+            fileMatch = { 'package.json' },
+            url = 'https://json.schemastore.org/package.json',
+          },
+        },
+      },
+    },
+  },
   tsserver = {
     on_attach = function(client)
       local rc = client.server_capabilities
