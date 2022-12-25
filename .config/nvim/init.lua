@@ -21,6 +21,8 @@ Plug 'hrsh7th/nvim-cmp'
 -- LSP snippet
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'mattn/emmet-vim'
 
 -- LSP status line
 Plug 'nvim-lua/lsp-status.nvim'

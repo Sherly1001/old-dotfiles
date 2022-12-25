@@ -46,6 +46,8 @@ if g.neovide then
   vim.cmd [[ nn <silent> <c--> :call v:lua.Funcs.fontsize(-1)<cr> ]]
 end
 
+g.user_emmet_leader_key = ','
+
 g.netrw_liststyle = 3
 g.netrw_browser_split = 4
 
