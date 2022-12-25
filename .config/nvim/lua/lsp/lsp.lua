@@ -22,7 +22,13 @@ local langs = {
 }
 
 local lsp = {
+  html = {},
+  volar = {},
+  gopls = {},
+  pylsp = {},
+  clangd = {},
   bashls = {},
+  rust_analyzer = {},
   jsonls = {
     settings = {
       json = {
@@ -43,9 +49,6 @@ local lsp = {
       rc.documentRangeFormattingProvider = false
     end,
   },
-  clangd = {},
-  gopls = {},
-  rust_analyzer = {},
   efm = {
     filetypes = vim.tbl_keys(langs),
     init_options = {
