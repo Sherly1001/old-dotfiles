@@ -13,11 +13,11 @@ keymap('i', '<c-j>', '<down>', opts)
 keymap('i', '<c-h>', '<left>', opts)
 keymap('i', '<c-l>', '<right>', opts)
 
-keymap('i', '<c-s-v>', '<c-r>+', opts_sl)
-keymap('i', '<s-insert>', '<c-r>+', opts_sl)
+keymap('i', '<c-s-v>', '<c-r><c-o>+', opts_sl)
+keymap('i', '<s-insert>', '<c-r><c-o>+', opts_sl)
 
-keymap('c', '<c-s-v>', '<c-r>+', opts)
-keymap('c', '<s-insert>', '<c-r>+', opts)
+keymap('c', '<c-s-v>', '<c-r><c-o>+', opts)
+keymap('c', '<s-insert>', '<c-r><c-o>+', opts)
 
 -- visual mode
 keymap('v', '<c-c>', '"+y', opts_sl)
