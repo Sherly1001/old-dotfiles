@@ -5,6 +5,11 @@ local prettier_fmt = {
   formatStdin = true,
 }
 
+local python_fmt = {
+  formatCommand = 'yapf --quiet',
+  formatStdin = true,
+}
+
 local langs = {
   typescript = { prettier_fmt },
   javascript = { prettier_fmt },
@@ -19,13 +24,14 @@ local langs = {
   scss = { prettier_fmt },
   css = { prettier_fmt },
   markdown = { prettier_fmt },
+  python = { python_fmt },
 }
 
 local lsp = {
   html = {},
   volar = {},
   gopls = {},
-  pylsp = {},
+  pyright = {},
   clangd = {},
   bashls = {},
   rust_analyzer = {},
