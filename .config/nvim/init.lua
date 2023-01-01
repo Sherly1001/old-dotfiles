@@ -24,6 +24,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'mattn/emmet-vim'
 
+Plug('xianghongai/vscode-react-snippet', { ['do'] = 'yarn install || yarn build || true ' })
+
 -- LSP status line
 Plug 'nvim-lua/lsp-status.nvim'
 
