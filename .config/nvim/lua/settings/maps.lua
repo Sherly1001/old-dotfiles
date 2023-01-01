@@ -13,8 +13,11 @@ keymap('i', '<c-j>', '<down>', opts)
 keymap('i', '<c-h>', '<left>', opts)
 keymap('i', '<c-l>', '<right>', opts)
 
-keymap('i', '<c-s-v>', '<c-r>*', opts_sl)
-keymap('i', '<s-insert>', '<c-r>*', opts_sl)
+keymap('i', '<c-s-v>', '<c-r>+', opts_sl)
+keymap('i', '<s-insert>', '<c-r>+', opts_sl)
+
+keymap('c', '<c-s-v>', '<c-r>+', opts)
+keymap('c', '<s-insert>', '<c-r>+', opts)
 
 -- visual mode
 keymap('v', '<c-c>', '"+y', opts_sl)
@@ -26,6 +29,8 @@ keymap('t', '<c-n>', '<c-\\><c-n>', opts_sl)
 keymap('t', '<c-w>', '<c-\\><c-n><c-w>', opts_sl)
 
 -- normal mode
+keymap('n', 'Q', ':q!<cr>', opts_sl)
+
 keymap('n', '<a-j>', '<c-]>', opts_sl)
 keymap('n', '<a-k>', '<c-t>', opts_sl)
 
