@@ -31,7 +31,7 @@ __git_ps () {
     echo -e "$bk[$cl$br$bk]\033[m"
 }
 
-__sher_ps="\[\e]0;\u@\h: \w\a\]\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w \[\$(__git_ps)\]\n"
+__sher_ps="\[\e0\${debian_chroot:+(\$debian_chroot)}\[\e[01;32m\]\u@\h: \[\e[01;34m\]\w \[\$(__git_ps)\]\n"
 
 export PS1="\$(if [ \$? == 0 ];then arw=\"\[\e[01;32m\]-> \";else arw=\"\[\e[01;31m\]-> \";fi;echo \"$__sher_ps\$arw\[\e[0m\]\")"
 
