@@ -30,6 +30,7 @@ keymap('t', '<c-w>', '<c-\\><c-n><c-w>', opts_sl)
 
 -- normal mode
 keymap('n', 'Q', ':q!<cr>', opts_sl)
+keymap('n', 'X', ':x<cr>', opts_sl)
 
 keymap('n', '<a-j>', '<c-]>', opts_sl)
 keymap('n', '<a-k>', '<c-t>', opts_sl)
