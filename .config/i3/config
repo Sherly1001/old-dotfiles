@@ -12,9 +12,10 @@ set $up k
 set $down j
 
 set $terminal alacritty
+# set $terminal sakura
 set $broswer google-chrome-beta
 set $broswer_private --incognito
-set $broswer_2 brave
+set $broswer_2 brave-beta
 set $broswer_2_private --incognito
 
 set $color_red              #E06C75
@@ -175,19 +176,20 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+e exit
 
 # binding keys
-bindsym $mod+Return         workspace $ws2, exec --no-startup-id $terminal
-bindsym $mod+Shift+Return   exec --no-startup-id $terminal
-bindsym $mod+g              exec --no-startup-id $broswer
-bindsym $mod+Shift+g        exec --no-startup-id $broswer $broswer_private
-bindsym $mod+b              exec --no-startup-id $broswer_2
-bindsym $mod+Shift+b        exec --no-startup-id $broswer_2 $broswer_2_private
-bindsym $mod+m              exec --no-startup-id firefox
-bindsym $mod+Shift+m        exec --no-startup-id firefox --private-window
-bindsym $mod+Mod2+Print     exec --no-startup-id flameshot gui
-bindsym $mod+p              exec --no-startup-id rofi -show drun -modi drun
-bindsym $mod+r              exec --no-startup-id rofi -show run
-bindsym $mod+Mod2+F12       exec --no-startup-id redshift-gtk
-bindsym $mod+Mod1+l         exec --no-startup-id ~/.config/i3/scripts/i3-lock.sh
+bindsym $mod+Return             workspace $ws2, exec --no-startup-id $terminal
+bindsym $mod+Shift+Return       exec --no-startup-id $terminal
+bindsym $mod+Ctrl+Shift+Return  exec --no-startup-id $terminal --class TermFloat
+bindsym $mod+g                  exec --no-startup-id $broswer
+bindsym $mod+Shift+g            exec --no-startup-id $broswer $broswer_private
+bindsym $mod+b                  exec --no-startup-id $broswer_2
+bindsym $mod+Shift+b            exec --no-startup-id $broswer_2 $broswer_2_private
+bindsym $mod+m                  exec --no-startup-id firefox
+bindsym $mod+Shift+m            exec --no-startup-id firefox --private-window
+bindsym $mod+Mod2+Print         exec --no-startup-id flameshot gui
+bindsym $mod+p                  exec --no-startup-id rofi -show drun -modi drun
+bindsym $mod+r                  exec --no-startup-id rofi -show run
+bindsym $mod+Mod2+F12           exec --no-startup-id redshift-gtk
+bindsym $mod+Mod1+l             exec --no-startup-id ~/.config/i3/scripts/i3-lock.sh
 
 # bright
 bindsym Mod2+XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/scripts/light.sh -s -A 5
@@ -211,6 +213,7 @@ focus_follows_mouse no
 gaps inner 15
 # smart_gaps on
 
+for_window [instance="TermFloat"] floating enabled
 for_window [class="feh"] floating enable
 for_window [class="copyq"] floating enable
 for_window [class="Python"] floating enable
@@ -234,4 +237,3 @@ exec --no-startup-id copyq
 exec --no-startup-id ~/.config/i3/scripts/background.sh
 
 # startup applications
-# exec --no-startup-id google-chrome-stable
