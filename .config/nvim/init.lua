@@ -4,6 +4,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
 -- utils plugins
 Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
+Plug 'lervag/vimtex'
 
 -- LSP
 Plug 'neovim/nvim-lspconfig'
@@ -16,6 +17,7 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-omni'
 Plug 'hrsh7th/nvim-cmp'
 
 -- LSP snippet

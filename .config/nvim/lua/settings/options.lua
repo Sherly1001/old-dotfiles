@@ -78,6 +78,23 @@ g.ctrlp_prompt_mappings = {
   ['AcceptSelection("t")'] = {'<cr>', '<2-LeftMouse>'},
 }
 
+g.vimtex_view_method = 'zathura'
+g.vimtex_compiler_method = 'latexmk'
+g.vimtex_compiler_latexmk = {
+  build_dir = 'build',
+  executable = 'latexmk',
+  options = {
+    '-xelatex',
+    '-verbose',
+    '-file-line-error',
+    '-synctex=1',
+    '-interaction=nonstopmode',
+  }
+}
+g.vimtex_compiler_latexmk_engines = {
+  _ = ''
+}
+
 local au = {}
 
 au['dynamic_startcase'] = {

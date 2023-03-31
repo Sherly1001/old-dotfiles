@@ -88,6 +88,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'vsnip' },
+    { name = 'omi' },
   }, {
     { name = 'path' },
     { name = 'buffer' },

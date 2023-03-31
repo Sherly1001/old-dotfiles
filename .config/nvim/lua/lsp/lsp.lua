@@ -28,6 +28,7 @@ local langs = {
 }
 
 local lsp = {
+  texlab = {},
   html = {},
   volar = {},
   gopls = {},
