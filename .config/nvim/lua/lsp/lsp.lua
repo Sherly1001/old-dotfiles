@@ -65,7 +65,7 @@ local lsp = {
       languages = langs,
     },
   },
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         diagnostics = {
