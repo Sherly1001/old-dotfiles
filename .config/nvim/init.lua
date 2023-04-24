@@ -49,6 +49,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'TovarishFin/vim-solidity'
 Plug 'modocache/move.vim'
+Plug 'ollykel/v-vim'
 
 vim.call('plug#end')
 

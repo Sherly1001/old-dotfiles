@@ -31,6 +31,7 @@ local lsp = {
   texlab = {},
   html = {},
   volar = {},
+  vls = {},
   gopls = {},
   pyright = {},
   clangd = {},
