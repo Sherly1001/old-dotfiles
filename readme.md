@@ -28,8 +28,8 @@
 ## Installation guide
 
 ```
-git clone https://github.com/Sherly1001/flake ~/flake
-cd ~/flake
+git clone https://github.com/Sherly1001/dotfiles ~/dotfiles
+cd ~/dotfiles
 cp /etc/nixos/hardware-configuration.nix hosts/
-sudo nixos-rebuild switch --flake ~/flake/.#nixos
+sudo nixos-rebuild switch --flake ~/dotfiles/.#nixos
 ```
