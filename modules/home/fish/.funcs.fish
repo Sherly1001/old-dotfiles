@@ -84,7 +84,7 @@ function nx --description 'nix-shell with pre conf shell'
 
   set shell /cmn/sx/$_flag_shell.nix
   if test -d /cmn/sx/$_flag_shell
-    set shell /cmn/sx/$_flag_shell.nix
+    set shell /cmn/sx/$_flag_shell
   end
 
   if set -q _flag_run && test -n "$_flag_run"

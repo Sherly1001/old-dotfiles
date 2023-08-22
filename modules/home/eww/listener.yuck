@@ -1,0 +1,6 @@
+(deflisten title :initial '' `eww-script title`)
+(deflisten workspaces :initial '[]' `eww-script workspaces`)
+(deflisten wifi-connecting :initial '' `eww-script wifi watch`)
+(deflisten vol :initial '{}' `eww-script vol watch`)
+(deflisten brigh :initial '{}' `eww-script brigh watch`)
+(deflisten tray :initial '{}' `sni`)

@@ -1,0 +1,223 @@
+(include './revealer.yuck')
+
+(defwidget workspaces []
+  (box :halign 'start' :space-evenly false
+    (eventbox :onscroll 'eww-script change-ws {}'
+      (box :class 'workspaces'
+        (for workspace in workspaces
+          (button
+            :onclick 'eww-script change-ws ${workspace.id}'
+            :class 'workspace ${workspace.active ? 'current' : ''}'
+            (label :class 'icon' :text {workspace.name})
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget shernoob []
+  (box :class 'shernoob' :halign 'start'
+    (eventbox
+      :onclick 'change-wall.sh'
+      :onrightclick 'change-wall.sh open'
+      (label :text '| Sher-Noob |')
+    )
+  )
+)
+
+(defwidget title []
+  (box :class 'title'
+    (label :text {title} :limit-width 80)
+  )
+)
+
+(defwidget cpu []
+  (box :class 'cpu' :space-evenly false
+    (label :class 'icon' :text ' ')
+    (label :text '${round(EWW_CPU.avg, 2)}%')
+  )
+)
+
+(defvar show-brigh false)
+(defwidget brigh []
+  (revealer-onhover
+    :class 'brigh'
+    :var show-brigh
+    :var-name 'show-brigh'
+    (box :class 'icon'
+      (circular-progress
+        :value {brigh.val ?: 0}
+        :start-at 75
+        :thickness 10
+        :clockwise false
+      )
+    )
+    (box :space-evenly false
+      (label :text '${brigh.val ?: 0}% ')
+      (scale
+        :value {(brigh.val ?: 0) / 5}
+        :onchange 'eww-script brigh change $(({} * 5))'
+        :min 1
+        :max 21
+      )
+    )
+  )
+)
+
+(defvar show-vol false)
+(defwidget volume []
+  (revealer-onhover
+    :class 'volume ${(vol.muted ?: false) ? 'muted': ''}'
+    :var show-vol
+    :var-name 'show-vol'
+    :onclick 'eww-script vol change toggle'
+    :onrightclick 'pavucontrol &'
+    (label :class 'icon' :text '${vol.icon} ')
+    (box :space-evenly false
+      (label :text '${vol.val ?: 0}% ')
+      (scale
+        :value {(vol.val ?: 0) / 5}
+        :onchange 'eww-script vol change $(({} * 5))%'
+        :min 0
+        :max 21
+      )
+    )
+  )
+)
+
+(defwidget wifi-list []
+  (eventbox :onhoverlost 'eww-script pop wifi close'
+    (box :class 'popup wifi-list' :orientation 'v' :space-evenly false
+      (label :class 'header' :text '  Networks')
+      (box :class 'loading' :space-evenly false :visible {arraylength(wifi-conns) == 0}
+        (image :image-width 5 :image-height 5 :path './imgs/loading.gif')
+        (label :text 'Loading Connections')
+      )
+      (for conn in wifi-conns
+        (eventbox
+          :onclick 'eww-script wifi toggle "${conn.name}" "${conn.connected}"'
+          (box
+            :space-evenly false
+            :class {'conn'
+              + '${conn.connected ? ' connected' : ''}'
+              + '${conn.name == wifi-connecting ? ' connecting' : ''}'}
+            (label :halign 'start' :text {conn.name})
+            (label :hexpand true)
+            (label :halign 'start' :text {conn.bars})
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwindow wifi
+  :monitor 0
+  :geometry (geometry
+    :x 125
+    :y 5
+    :width 250
+    :anchor 'top right'
+  )
+  (wifi-list)
+)
+
+(defwidget network []
+  (box :class 'network'
+    :space-evenly false
+    (eventbox :onclick 'eww-script pop wifi'
+      (box :class 'icons' :tooltip {interfaceId}
+        ; (label :text '${wifi-conns}${wifi-connecting}' :visible false)
+        (label :class {round((EWW_NET[interfaceId]?.NET_UP ?: 0) / 1000, 2) > 0.1 ?
+          round((EWW_NET[interfaceId]?.NET_UP ?: 0) / 1000, 2) > 5 ?
+          "veryuplink" : "uplink" : "noactive"} :text ""
+        )
+        (label :class {round((EWW_NET[interfaceId]?.NET_DOWN ?: 0) / 1000, 2) > 0.1 ?
+          round((EWW_NET[interfaceId]?.NET_DOWN ?: 0) / 1000, 2) > 10 ?
+          "verydownlink" : "downlink" : "noactive"} :text ""
+        )
+      )
+    )
+  )
+)
+
+(defwidget cal []
+  (box :class 'popup cal'
+    :space-evenly false
+    (eventbox :onhoverlost 'eww-script pop calendar close'
+      (calendar)
+    )
+  )
+)
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x 10
+    :y 5
+    :anchor 'top right'
+  )
+  (cal)
+)
+
+(defwidget date []
+  (box :class 'date'
+    (eventbox :onclick 'eww-script pop calendar'
+      (label :text {formattime(EWW_TIME, '%a %b %d, %R')})
+    )
+  )
+)
+
+(defvar show-power-menu false)
+(defwidget power []
+  (box :class 'power' :space-evenly false
+    (eventbox
+      :onhoverlost 'eww update show-power-menu=false'
+      (box :space-evenly false
+        (revealer
+          :reveal show-power-menu
+          :transition 'slideleft'
+          :duration '200ms'
+          (box :class 'menu'
+            (button :class 'lockscreen' :tooltip 'Lockscreen'
+              :onclick 'lock.sh &'
+              (label :class 'icon' :text '')
+            )
+            (button :class 'lockout' :tooltip 'Logout'
+              :onclick 'hyprctl dispatch exit'
+              (label :class 'icon' :text '')
+            )
+            (button :class 'reboot' :tooltip 'Reboot'
+              :onclick 'reboot &'
+              (label :class 'icon' :text '')
+            )
+          )
+        )
+        (button :class 'power-btn'
+          :tooltip {show-power-menu ? 'Poweroff' : 'Open Menu'}
+          :onclick {
+            show-power-menu ?
+              'poweroff &' :
+              'eww-script pop && eww update show-power-menu=${!show-power-menu}'
+          }
+          (label :class 'icon' :text '')
+        )
+      )
+    )
+  )
+)
+
+(defwidget tray []
+  (box :class 'tray'
+    (for img in {jq(tray, 'select(.info?.items) | .info.items | sort_by(.service)')}
+      (image
+        :class 'tray-item'
+        :tooltip {img.id}
+        :path {img.icon}
+        :image-width 20
+        :image-height 20
+      )
+    )
+  )
+)

@@ -20,7 +20,7 @@ while getopts ":hfs:" opt; do
 done
 
 if [[ -z "$FULL" ]]; then
-    slurp="$(slurp 2>/dev/null)"
+    slurp="$(slurp -d 2>/dev/null)"
     [[ -n "$slurp" ]] && geo="-g '$slurp'" || exit 0
 fi
 

@@ -1,0 +1,58 @@
+# vi: ft=sh sw=2 ts=2
+
+TMP_DIR=/tmp/eww
+
+icons=(  )
+icon_muted=
+headphones=()
+sound=/run/current-system/sw/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+get() {
+  outp=(`amixer sget Master |
+    sed -n 's/^.*\[\(.*\)%\] \[\(on\|off\)\]/\1 \2/p' |
+    head -1`)
+
+  houtp=(`amixer -c 0 sget Headphone |
+    sed -n 's/^.*\[\(.*\)%\].*\[\(on\|off\)\]/\1 \2/p' |
+    head -1`)
+
+  if [[ "${houtp[1]}" = on ]]; then
+    headphone_on=true
+    icon_shows=("${headphones[@]}")
+  else
+    headphone_on=false
+    icon_shows=("${icons[@]}")
+  fi
+
+  val=${outp[0]}
+  len=${#icon_shows[@]}
+  idx=$(((val - 1) * len / 100))
+  icon=${icon_shows[$idx]}
+
+  muted=false
+  if [[ ${outp[1]} = off ]]; then
+    muted=true
+    icon="$icon_muted"
+  fi
+
+  echo "{\"val\":"$val",\"icon\":\"$icon\",\"muted\":$muted,\"headphone\":$headphone_on}"
+}
+
+change() {
+  amixer sset Master "$1" &>/dev/null
+  play "$sound" &>/dev/null &
+}
+
+watch() {
+  get
+  pactl subscribe |
+  while read event; do
+    [[ ! "$event" =~ "'change' on sink" ]] && continue
+    get
+  done
+}
+
+cmd="$1"
+shift
+
+"$cmd" "$@"

@@ -1,0 +1,57 @@
+(include './poller.yuck')
+(include './listener.yuck')
+(include './widgets.yuck')
+
+(defwidget left []
+  (box :class 'left'
+    :halign 'start'
+    :space-evenly false
+    (workspaces)
+    (shernoob)
+  )
+)
+
+(defwidget center []
+  (box :class 'center'
+    :halign 'center'
+    :hexpand true
+    :space-evenly false
+    (title)
+  )
+)
+
+(defwidget right []
+  (box :class 'right'
+    :halign 'end'
+    :space-evenly false
+    (tray)
+    (cpu)
+    (brigh)
+    (volume)
+    (network)
+    (date)
+    (power)
+  )
+)
+
+(defwidget bar []
+  (box :class 'bar'
+    :valign 'center'
+    :space-evenly false
+    (left)
+    (center)
+    (right)
+  )
+)
+
+(defwindow main
+  :monitor 0
+  :stacking 'fg'
+  :exclusive true
+  :geometry (geometry
+    :x 0
+    :y 0
+    :width '100%'
+    :anchor 'top center')
+  (bar)
+)

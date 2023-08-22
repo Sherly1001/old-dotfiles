@@ -1,0 +1,41 @@
+# vi: ft=sh sw=2 ts=2
+
+TMP_DIR=/tmp/eww
+
+class="/sys/class/backlight"
+card=`ls "$class" | head -n1`
+
+brightness="$class/$card/actual_brightness"
+max_brightness="$class/$card/max_brightness"
+
+icons=(🌑 🌒 🌓 🌔 🌕)
+sound=/run/current-system/sw/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+get() {
+  cur=`cat "$brightness"`
+  max=`cat "$max_brightness"`
+  val=$((cur * 100 / $max))
+
+  len=${#icons[@]}
+  idx=$(((val - 1) * len / 100))
+  icon=${icons[$idx]}
+
+  echo "{\"val\":"$val",\"icon\":\"$icon\"}"
+}
+
+change() {
+  light -S "$1"
+  play "$sound" &>/dev/null &
+}
+
+watch() {
+  get
+  while inotifywait -qq -e modify "$brightness"; do
+    get
+  done
+}
+
+cmd="$1"
+shift
+
+"$cmd" "$@"

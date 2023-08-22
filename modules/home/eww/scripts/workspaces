@@ -1,0 +1,41 @@
+# vi: ft=sh sw=2 ts=2
+
+names='[
+  "1 ",
+  "2 ",
+  "3 ",
+  "4 ",
+  "5 ",
+  "6 ",
+  "7 ",
+  "8 ",
+  "9 ",
+  "10 "
+]'
+
+cmd='sort_by(.id)
+  | map(select(.name != "special"))
+  | [ .[]
+  | {
+    id: .id,
+    name: ($names[.id - 1] // .id - 1),
+    active: (.id == $curr_ws),
+  } ]'
+
+spaces() {
+  curr_ws=`hyprctl activeworkspace -j | jq '.id'`
+
+  hyprctl workspaces -j | jq \
+    -Mc \
+    --argjson names "$names" \
+    --argjson curr_ws "$curr_ws" \
+    "$cmd"
+}
+
+spaces
+socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - |
+  stdbuf -oL \
+  grep -e '^workspace>>' -e '^focusedmon>>' -e '^createworkspace>>' |
+  while read -r line; do
+    spaces
+  done

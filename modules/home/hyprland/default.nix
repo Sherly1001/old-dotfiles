@@ -1,28 +1,32 @@
 { inputs, pkgs, ... }:
 {
-  imports = [
-    ./variables.nix
-    inputs.hyprland.homeManagerModules.default
-  ];
-
   home.packages = with pkgs; [
     swww
-    ripgrep
     pavucontrol
     swaylock-effects
     wl-clipboard
     xclip
-    xdg-utils
-    sox
-    copyq
+    wayland
     grim
     slurp
-    wayland
+    pulseaudio
+
+    jq
+    sox
+    socat
+    ripgrep
+    xdg-utils
+    inotify-tools
+
+    eww-wayland
+    copyq
     rofi
     alacritty
     neovide
+
     brave
     firefox
+
     go
     nodejs
     yarn
@@ -31,11 +35,7 @@
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
-    nvidiaPatches = false;
+    xwayland.enable = true;
     systemdIntegration = true;
     extraConfig = ''
       $mainMod = SUPER
@@ -128,10 +128,6 @@
 
       decoration {
         rounding = 0
-        blur = yes
-        blur_size = 3
-        blur_passes = 1
-        blur_new_optimizations = on
 
         active_opacity = 0.9
         inactive_opacity = 0.85
@@ -140,6 +136,12 @@
         shadow_range = 4
         shadow_render_power = 3
         col.shadow = rgba(1a1a1aee)
+
+        blur {
+          size = 3
+          passes = 1
+          new_optimizations = on
+        }
       }
 
       animations {
@@ -295,6 +297,7 @@
 
       # windowrule
       windowrule = tile, neovide
+      windowrule = tile, Brave-browser
       windowrule = tile, title:^(WPS PDF)$
       windowrule = tile, title:^(WPS Writer)$
       windowrule = tile, title:^(WPS Spreadsheets)$
@@ -314,9 +317,8 @@
       windowrule = pin, $pic-in-pic
 
       # autostart
-      exec-once = swww init
-      exec-once = waybar
-      exec-once = wall.sh
+      exec-once = swww init; sleep 0.5 && wall.sh
+      exec-once = eww open main
       exec-once = fcitx5 -dr
       exec-once = sleep 5 && copyq --start-server
     '';

@@ -1,0 +1,20 @@
+(defwidget revealer-onhover [
+    var var-name ?class ?tooltip
+    ?onclick ?onmiddleclick ?onrightclick]
+  (eventbox
+    :tooltip tooltip
+    :onclick onclick
+    :onmiddleclick onmiddleclick
+    :onrightclick onrightclick
+    :onhover 'eww update ${var-name}=true'
+    :onhoverlost 'eww update ${var-name}=false'
+    (box :class 'revealer-onhover ${class}' :space-evenly false
+      (children :nth 0)
+      (revealer
+        :reveal var
+        :transition 'slideleft'
+        (children :nth 1)
+      )
+    )
+  )
+)

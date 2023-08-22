@@ -44,7 +44,7 @@ if g.neovide then
   g.neovide_cursor_vfx_mode         = 'railgun'
   g.neovide_cursor_vfx_particle_density = 10.0
 
-  opt.guifont = 'Consolas:h9'
+  opt.guifont = 'Consolas:h13'
   vim.cmd [[ nn <silent> <c-=> :call v:lua.Funcs.fontsize()<cr> ]]
   vim.cmd [[ nn <silent> <c--> :call v:lua.Funcs.fontsize(-1)<cr> ]]
 end
@@ -68,6 +68,8 @@ g.indent_guides_guide_size  = 1
 
 g.webdevicons_enable = 1
 g.webdevicons_enable_nerdtree = 1
+
+g.db_ui_show_help = 0
 
 g.AutoPairsMapCh = 0
 

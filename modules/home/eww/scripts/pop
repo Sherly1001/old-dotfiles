@@ -1,0 +1,29 @@
+# vi: ft=sh sw=2 ts=2
+
+TMP_DIR=/tmp/eww
+IS_CLOSE="$2"
+mkdir -p "$TMP_DIR"
+
+open() {
+  eww open "$1" &>/dev/null
+  touch "$TMP_DIR/$1"
+}
+
+close() {
+  eww close "$1" &>/dev/null
+  rm -fr "$TMP_DIR/$1"
+}
+
+toggle() {
+  if [ -f "$TMP_DIR/$1" ]; then
+    close "$1"
+  elif [ "$IS_CLOSE" != 'close' ]; then
+    open "$1"
+  fi
+}
+
+for win in `eww windows | sed -e '/^*/!d' -e 's/^*//' -e '/main/d' -e "/$1/d"`; do
+  close "$win" &>/dev/null
+done
+
+[[ -n "$1" ]] && toggle "$1" || true

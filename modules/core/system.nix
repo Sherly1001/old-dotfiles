@@ -1,7 +1,10 @@
 { self, pkgs, inputs, stateVersion, ... }:
-{
-  time.timeZone = "Asia/Ho_Chi_Minh";
-  i18n.defaultLocale = "en_US.UTF-8";
+let
+  zone = "Asia/Ho_Chi_Minh";
+  locale = "en_US.UTF-8";
+in {
+  time.timeZone = zone;
+  i18n.defaultLocale = locale;
 
   i18n.inputMethod.enabled = "fcitx5";
   i18n.inputMethod.fcitx5.addons = with pkgs; [ fcitx5-bamboo ];
@@ -43,5 +46,6 @@
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "ibus";
+    TZ = zone;
   };
 }

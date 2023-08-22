@@ -1,0 +1,220 @@
+@import "./colors.scss";
+
+$font: "Noto Sans";
+$font-aws: Consolas, "Font Awesome 6 Free", "Font Awesome 6 Brands";
+
+* {
+  all: unset;
+  font-size: 1.4rem;
+}
+
+tooltip {
+  background: $background-widget;
+  border-radius: 0.5rem;
+}
+
+scale {
+  padding-right: 0.5rem;
+
+  trough {
+    background: $grey;
+    border-radius: 0.3rem;
+    min-height: 0.7rem;
+    min-width: 6rem;
+
+    highlight {
+      border-radius: 0.3rem;
+      background-image: linear-gradient(to right, $white 30%, $blue 100% * 50);
+    }
+  }
+}
+
+.icon {
+  font-family: $font-aws;
+}
+
+.bar {
+  margin: 5px 10px 0px 10px;
+  padding: 0 5px;
+  border-radius: 0.5rem;
+  color: $white;
+  background: $background;
+  font-family: $font;
+}
+
+.popup {
+  background: $background-widget;
+  border-radius: 0.5rem;
+}
+
+.left > *:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.right > * {
+  margin-right: 1rem;
+}
+
+.workspaces {
+  .workspace {
+    padding: 0 0.2rem;
+
+    &:hover {
+      color: $light;
+    }
+
+    &.current {
+      color: $light;
+      border-bottom: 2px solid $light;
+    }
+  }
+}
+
+.shernoob {
+  border-bottom: 2px solid #be5046;
+}
+
+.title {
+  padding: 0.3rem 0;
+}
+
+.tray {
+  .tray-item {
+    padding-left: 0.5rem;
+  }
+}
+
+.brigh {
+  color: $yellow;
+
+  .icon {
+    padding-right: 0.8rem;
+  }
+
+  scale trough highlight {
+    background-image: linear-gradient(to right, $yellow 30%, $red 100% * 50);
+  }
+}
+
+.volume {
+  color: $green;
+
+  &.muted {
+    color: $red;
+  }
+
+  scale trough highlight {
+    background-image: linear-gradient(to right, $light 30%, $blue 100% * 50);
+  }
+}
+
+.network {
+  .icons > *:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+
+  .veryuplink {
+    color: $red;
+  }
+
+  .uplink {
+    color: $blue;
+  }
+
+  .noactive {
+    color: $white;
+  }
+
+  .downlink {
+    color: $cyan;
+  }
+
+  .verydownlink {
+    color: $green;
+  }
+}
+
+.wifi-list {
+  padding-bottom: 0.5rem;
+
+  .header {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid $light;
+  }
+
+  .loading {
+    padding-left: 1rem;
+    color: $yellow;
+
+    & > :last-child {
+      padding-left: 0.5rem;
+    }
+  }
+
+  .conn {
+    color: $white;
+
+    & > * {
+      margin-left: 2rem;
+    }
+
+    &.connecting {
+      animation: blink 500ms infinite;
+
+      @keyframes blink {
+        0% {
+          color: $white;
+        }
+        100% {
+          color: $yellow;
+        }
+      }
+    }
+
+    &.connected {
+      color: $green;
+    }
+  }
+}
+
+.cal {
+  calender {
+    color: $white;
+  }
+
+  calendar:selected {
+    color: $blue;
+  }
+
+  calendar.header {
+    color: $blue;
+    font-weight: bold;
+  }
+
+  calendar:indeterminate {
+    color: $white;
+  }
+}
+
+.power {
+  .power-btn {
+    color: $red;
+  }
+
+  .menu > * {
+    padding-right: 1rem;
+  }
+
+  .reboot {
+    color: $yellow;
+  }
+
+  .lockout {
+    color: $blue;
+  }
+
+  .lockscreen {
+    color: $green;
+  }
+}

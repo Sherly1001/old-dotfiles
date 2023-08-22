@@ -1,0 +1,13 @@
+# vi: ft=sh sw=2 ts=2
+
+script_dir=~/.config/eww/scripts
+shell="$script_dir/$1"
+
+if [[ ! -f "$shell" ]]; then
+  echo 'Script missing or not found. Available scripts:' 1>&2
+  echo "$(ls "$script_dir" | sed 's/^/  /')" 1>&2
+  exit 1
+fi
+
+shift
+"$shell" "$@"

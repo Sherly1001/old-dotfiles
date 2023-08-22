@@ -1,0 +1,11 @@
+# vi: ft=sh sw=2 ts=2
+
+ws="$1"
+
+if [ "$ws" = down ]; then
+  ws='e-1'
+elif [ "$ws" = up ]; then
+  ws='e+1'
+fi
+
+hyprctl dispatch workspace "$ws" &>/dev/null

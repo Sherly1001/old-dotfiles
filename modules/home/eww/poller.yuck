@@ -1,0 +1,9 @@
+(defpoll interfaceId
+  :initial ''
+  :interval '30s'
+  `route | grep default | head -n1 | awk '{print $8}'`)
+
+(defpoll wifi-conns
+  :interval '1s'
+  :initial '[]'
+  `eww-script wifi list`)

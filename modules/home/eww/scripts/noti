@@ -1,0 +1,20 @@
+# vi: ft=sh sw=2 ts=2
+
+sys_time=`cat /proc/uptime|cut -d'.' -f1`
+cur_time=`date '+%s'`
+
+dunstctl history | jq -Mc \
+  --argjson sys_time "$sys_time" \
+  --argjson cur_time "$cur_time" \
+  '.data
+  | .[]
+  | sort_by(.timestamp.data)
+  | map({
+      id: .id.data,
+      time: ($cur_time - $sys_time + .timestamp.data / 1000000 | round),
+      title: .summary.data,
+      app: .appname.data,
+      body: .body.data,
+      icon: .icon_path.data,
+    })
+  | reverse'

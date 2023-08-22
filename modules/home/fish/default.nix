@@ -22,7 +22,7 @@
     shellAliases = {
       vi = "nvim";
       nu = "nix-env --uninstall";
-      nv = "env -u WAYLAND_DISPLAY neovide --multigrid";
+      nv = "neovide --multigrid";
       xw = "env -u WAYLAND_DISPLAY";
 
       dp = "docker-compose";

@@ -1,0 +1,115 @@
+# vi: ft=sh sw=2 ts=2
+
+method=ListNames
+# method=ListActivatableNames
+# method=Introspectable.Introspect
+# method=Monitoring.BecomeMonitor
+
+inpect() {
+  dest="$1"
+  path="$2"
+
+  dbus-send --session \
+    --print-reply=literal \
+    --dest=$dest \
+    $path \
+    org.freedesktop.DBus.Introspectable.Introspect |
+    sed '1s/^   //'
+}
+
+send() {
+  dest="$1"
+  path="$2"
+  inter="$3"
+
+  shift 3
+  dbus-send --session \
+    --print-reply \
+    --dest=$dest \
+    $path \
+    $inter \
+    "$@"
+}
+
+list() {
+  send org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.$1
+}
+
+get_prop() {
+  send $1 $2 org.freedesktop.DBus.Properties.Get string:$3 string:$4
+}
+
+get_all_prop() {
+  send $1 $2 org.freedesktop.DBus.Properties.GetAll string:$3
+}
+
+# list $method
+# inpect org.kde.StatusNotifierWatcher /StatusNotifierWatcher
+# inpect :1.32 /StatusNotifierItem
+
+# get_all_prop \
+#   org.kde.StatusNotifierWatcher \
+#   /StatusNotifierWatcher \
+#   org.kde.StatusNotifierWatcher
+
+# get_all_prop \
+#   :1.581 \
+#   /StatusNotifierItem \
+#   org.kde.StatusNotifierItem
+
+# get_prop \
+#   :1.579 \
+#   /StatusNotifierItem \
+#   org.kde.StatusNotifierItem \
+#   Title
+
+# send \
+#   :1.576 \
+#   /StatusNotifierItem \
+#   org.kde.StatusNotifierItem.Activate \
+#   int32:50 int32:50
+
+# send :1.32 /MenuBar \
+#   com.canonical.dbusmenu.GetLayout \
+#   int32:0 int32:0 array:string:
+
+# inpect :1.32 /MenuBar
+
+# gdbus introspect -er -d :1.32 -o /
+
+# gdbus call -e \
+#   -d :1.32 \
+#   -o /MenuBar \
+#   -m com.canonical.dbusmenu.GetLayout -- \
+#   0 -1 \
+#   '[
+#       "type",
+#       "label",
+#       "visible",
+#       "enabled",
+#       "children-display",
+#       "accessible-desc"
+#   ]'
+
+# gdbus introspect -e \
+#   -d sher.noob \
+#   -o /BangBang
+
+gdbus call -e \
+  -d sher.noob \
+  -o /BangBang \
+  -m sher.noob.Echo -- \
+  '<(1,2)>'
+
+# gdbus call --session \
+#            --dest org.freedesktop.Notifications \
+#            --object-path /org/freedesktop/Notifications \
+#            --method org.freedesktop.Notifications.Notify \
+#            my_app_name \
+#            42 \
+#            gtk-dialog-info \
+#            "The Summary" \
+#            "Here's the body of the notification" \
+#            [] \
+#            {} \
+#            5000

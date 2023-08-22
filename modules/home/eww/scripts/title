@@ -1,0 +1,14 @@
+# vi: ft=sh sw=2 ts=2
+
+hyprctl activewindow -j | jq --raw-output .title
+socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - |
+  stdbuf -oL \
+  awk -F ',' '
+    /^closewindow>>/ {
+      printf "\n"
+    }
+    /^activewindow>>/ {
+      for (i = 2; i < NF; ++i) printf $i ","
+      printf $NF "\n"
+    }
+  '

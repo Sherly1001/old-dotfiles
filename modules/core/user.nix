@@ -4,10 +4,6 @@ let
   name = "Sherly1001";
   username = "sher";
   email = "Sherly1001@users.noreply.github.com";
-  packages = with pkgs; [
-    fish
-    neovim
-  ];
 in
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -25,6 +21,11 @@ in
       programs.git.enable = true;
       programs.git.userName = name;
       programs.git.userEmail = email;
+    };
+
+    users.root = {
+      imports = [ ../home/fish ];
+      home.stateVersion = stateVersion;
     };
   };
 

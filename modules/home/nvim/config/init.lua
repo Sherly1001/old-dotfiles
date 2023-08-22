@@ -8,6 +8,10 @@ Plug 'lervag/vimtex'
 Plug 'Asheq/close-buffers.vim'
 Plug 'mg979/vim-visual-multi'
 
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
 -- LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
@@ -53,6 +57,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'TovarishFin/vim-solidity'
 Plug 'modocache/move.vim'
 Plug 'ollykel/v-vim'
+Plug 'elkowar/yuck.vim'
 
 vim.call('plug#end')
 

@@ -1,0 +1,82 @@
+# vi: ft=sh sw=2 ts=2
+
+TMP_DIR=/tmp/eww
+
+list() {
+  LANG= nmcli --terse \
+    --colors no \
+    --fields in-use,ssid,bars,security \
+    device wifi list \
+    | awk -F ':' '{
+      $1 = $1 == "*" ? "true" : "false";
+      printf "{ \
+        \"connected\":%s, \
+        \"name\":\"%s\", \
+        \"bars\":\"%s\", \
+        \"sec\":\"%s\" \
+      }", $1, $2, $3, $4
+    }' \
+    | jq -Msc
+}
+
+new_conn_err="New connection activation was enqueued."
+
+try_connect() {
+  pkill rofi &>/dev/null &
+  echo "$1" > "$TMP_DIR/wifi-connecting"
+
+  err=`nmcli device wifi connect "$1" 2>&1 1>/dev/null`
+  if [[ "$err" =~ "$new_conn_err" ]]; then return 
+  elif [ -n "$err" ]; then
+    while true; do
+      passwd=`rofi -dmenu -p "Enter password for $1" \
+        -password \
+        -no-fixed-num-lines \
+        -location 5 \
+        -theme-str '#window {x-offset: -20; y-offset: -20; width: 600;}'`
+      [[ "$?" != 0 ]] && return
+
+      if [ -z "$passwd" ]; then break; fi
+      err=`nmcli device wifi connect "$1" password "$passwd" 2>&1 1>/dev/null`
+      if [[ "$err" =~ "$new_conn_err" ]]; then break
+      elif [ -n "$err" ]; then
+        nmcli connection delete "$1" &>/dev/null
+      else
+        break
+      fi
+    done
+  fi
+
+  echo > "$TMP_DIR/wifi-connecting"
+}
+
+connect() {
+  try_connect "$1" &
+}
+
+disconnect() {
+  nmcli connection down "$1" &>/dev/null &
+}
+
+toggle() {
+  if [ -z "$2" ]; then
+    current=`list | jq --raw-output '.[] | select(.connected) | .name'`
+  elif [ "$2" = true ]; then
+    current="$1"
+  fi
+
+  if [ "$current" = "$1" ]; then
+    disconnect "$1"
+  else
+    connect "$1"
+  fi
+}
+
+watch() {
+  stdbuf -oL tail -n1 -F "$TMP_DIR/wifi-connecting" 2>/dev/null
+}
+
+cmd="$1"
+shift
+
+"$cmd" "$@"

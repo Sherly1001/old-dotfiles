@@ -17,7 +17,6 @@ in
       ./pipewire.nix
       ./network.nix
       ./system.nix
-      ./wayland.nix
       ./user.nix
       ./program.nix
       ../../hosts/hardware-configuration.nix
